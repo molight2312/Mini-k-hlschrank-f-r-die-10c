@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mini-Kühlschrank im Klassenzimmer · Klasse 10c</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+:root{--bg:#0b1722;--bg2:#10222f;--ink:#f4efe4;--mute:#aebcc6;--gold:#d4b676;--gold2:#8f7640;--ice:#c4e6ee;--ice2:#7fc4d6;--warm:#f0a070;--line:rgba(212,182,118,.28);--e:cubic-bezier(.2,.7,.2,1);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:130px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 17px/1.75 Jost,system-ui,sans-serif;overflow-x:hidden}
+@media(min-width:800px){body{font-size:18.5px}}
+h1,h2,h3,h4{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;line-height:1.05;margin:0 0 .5em}
+h1{font-size:clamp(2.8rem,10.5vw,6.6rem)}
+h2{font-size:clamp(2.2rem,7vw,4.4rem)}
+h3{font-size:1.6rem;color:var(--gold)}
+h4{font-size:1.4rem;color:var(--ink);margin:0 0 .2em}
+p{color:var(--mute);max-width:62ch;margin:.4em 0 1em}
+a{color:var(--ice)}
+:focus-visible{outline:2px solid var(--ice);outline-offset:3px}
+button{font-family:inherit}
+#snow{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.75}
+#conf{position:fixed;inset:0;z-index:90;pointer-events:none}
+main,footer{position:relative;z-index:1}
+.page{display:none;position:relative;padding:2.6rem 1.4rem 3rem;min-height:calc(100svh - 120px)}
+.page.on{display:block}
+.blk{margin-top:5rem}
+.w{max-width:1100px;margin:0 auto}
+.tag{color:var(--gold);letter-spacing:.22em;font-size:.78rem;font-weight:500;text-transform:uppercase;margin-bottom:1rem}
+.tag::before{content:"";display:inline-block;width:2.2rem;height:1px;background:var(--gold);vertical-align:middle;margin-right:.8rem}
+.lead{font-size:1.15em;color:#c9d4db}
+.hl{color:var(--ink);background:linear-gradient(var(--gold),var(--gold)) 0 100%/0 2px no-repeat;transition:background-size 1.3s var(--e) .5s;padding-bottom:2px}
+.in .hl,.hl.in{background-size:100% 2px}
+
+/* ---------- reveal system ---------- */
+.js [data-a]{opacity:0;transition:opacity .9s var(--e),transform 1s var(--e),filter 1s var(--e),clip-path 1.1s var(--e);transition-delay:var(--d,0s)}
+.js [data-a=up]{transform:translateY(44px)}
+.js [data-a=left]{transform:translateX(-70px)}
+.js [data-a=right]{transform:translateX(70px)}
+.js [data-a=zoom]{transform:scale(.82)}
+.js [data-a=blur]{filter:blur(14px);transform:scale(1.04)}
+.js [data-a=flip]{transform:perspective(900px) rotateX(38deg) translateY(30px);transform-origin:50% 0}
+.js [data-a=clip]{opacity:1;clip-path:inset(0 100% 0 0)}
+.js [data-a=drop]{transform:translateY(-50px) rotate(-4deg)}
+.js [data-a].in{opacity:1;transform:none;filter:none;clip-path:inset(0 0 0 0)}
+.sp .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.js .sp .w>span{display:inline-block;transform:translateY(110%) rotate(5deg);transition:transform .9s var(--e);transition-delay:calc(var(--i)*55ms)}
+.js .sp.in .w>span{transform:none}
+
+/* ---------- fridge door transitions ---------- */
+#fx{position:fixed;inset:0;z-index:95;perspective:1800px;display:none;overflow:hidden}
+.js #fx.on{display:block}
+.fxd{position:absolute;top:0;bottom:0;display:none;background:linear-gradient(135deg,#f3f5f7,#a3adb4 52%,#dde1e4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),inset 0 0 80px rgba(0,0,0,.18);will-change:transform,opacity}
+.fxd::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.6) 45%,transparent 60%);background-size:260% 100%;animation:gloss 2.4s ease-in-out infinite}
+.fxd::after{content:"";position:absolute;inset:14px;border-radius:14px;border:1px solid rgba(42,54,64,.18)}
+.fxd .hd{position:absolute;border-radius:7px;background:linear-gradient(var(--gold),var(--gold2));box-shadow:0 3px 8px rgba(0,0,0,.35)}
+.fxd.l{left:0;width:50.2%;transform-origin:left center;box-shadow:inset -3px 0 0 rgba(0,0,0,.25),inset 0 0 80px rgba(0,0,0,.18)}
+.fxd.r{right:0;width:50%;transform-origin:right center}
+.fxd.l .hd{right:22px;top:64%;width:12px;height:18%}
+.fxd.r .hd{left:22px;top:64%;width:12px;height:18%}
+.fxd.s{left:0;width:100%;transform-origin:left center}
+.fxd.s .hd{right:30px;top:38%;width:14px;height:24%}
+.fxd.t{left:0;width:100%;transform-origin:center top}
+.fxd.t .hd{left:50%;bottom:34px;width:22%;height:14px;margin-left:-11%}
+#fx.m-double .fxd.l,#fx.m-double .fxd.r,#fx.m-single .fxd.s,#fx.m-freezer .fxd.t{display:block}
+#fxl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;color:#2a3640;opacity:0;z-index:3;pointer-events:none;width:90%}
+#fxl .n{font:600 clamp(4rem,16vw,8rem)/1 "Cormorant Garamond",serif;display:block;text-shadow:0 2px 0 rgba(255,255,255,.6)}
+#fxl .k{font:500 .78rem Jost;letter-spacing:.3em;text-transform:uppercase;display:block;margin-top:.4rem}
+#fxl .i{font-size:2.4rem;display:block;margin-bottom:.4rem}
+#fxg{position:fixed;inset:0;z-index:94;pointer-events:none;opacity:0;background:radial-gradient(ellipse at 50% 45%,rgba(240,252,255,.75),rgba(196,230,238,.25) 40%,transparent 75%)}
+#sweep{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:0;background:linear-gradient(100deg,transparent 30%,rgba(196,230,238,.14) 44%,rgba(255,255,255,.28) 50%,rgba(196,230,238,.14) 56%,transparent 70%)}
+.bmist{position:fixed;left:50%;top:50%;width:140px;height:140px;border-radius:50%;background:radial-gradient(rgba(230,248,252,.8),transparent 70%);pointer-events:none;z-index:96;animation:bm 1.6s ease-out forwards}
+@keyframes bm{from{opacity:.9;transform:translate(-50%,-50%) scale(.4)}to{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(3)}}
+
+/* ---------- header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:60;padding-top:env(safe-area-inset-top,0px);background:rgba(11,23,34,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hrow{height:60px;display:flex;align-items:center;gap:1rem;padding:0 1.2rem}
+.logo{font:400 1.45rem "Cormorant Garamond",Georgia,serif;color:var(--gold);text-decoration:none;white-space:nowrap}
+.logo span{display:inline-block;animation:spinS 9s linear infinite}
+@keyframes spinS{to{transform:rotate(360deg)}}
+.chn{display:none;gap:.25rem;margin-left:1rem;position:relative}
+.chn a{color:var(--mute);text-decoration:none;font-size:.9rem;padding:.4rem .9rem;border-radius:2rem;transition:color .3s,background .3s;white-space:nowrap}
+.chn a:hover{color:var(--ink)}
+.chn a.on{background:var(--gold);color:#0b1722}
+@media(min-width:900px){.chn{display:flex}}
+.temp{margin-left:auto;font:500 .92rem Jost,sans-serif;color:var(--tc,#f0a070);white-space:nowrap;border:1px solid currentColor;border-radius:2rem;padding:.25rem .8rem;transition:color .6s}
+.subs{height:52px;display:flex;gap:.4rem;overflow-x:auto;padding:0 1.2rem;align-items:center;border-top:1px solid rgba(212,182,118,.12);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.subs::-webkit-scrollbar{display:none}
+.subs .chl{font:500 .7rem Jost;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);flex:none;margin-right:.5rem;white-space:nowrap}
+.subs a{flex:none;padding:.35rem 1rem;border-radius:2rem;color:var(--mute);text-decoration:none;font-size:.92rem;min-height:38px;display:flex;align-items:center;gap:.4rem;border:1px solid var(--line);transition:all .3s;animation:subin .45s var(--e) both;animation-delay:calc(var(--i)*60ms)}
+.subs a.on{background:rgba(212,182,118,.16);color:var(--ink);border-color:var(--gold)}
+@keyframes subin{from{opacity:0;transform:translateY(-10px) scale(.9)}}
+#bar{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--warm),var(--gold),var(--ice))}
+main{padding-top:calc(113px + env(safe-area-inset-top,0px))}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(8,16,24,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;height:62px;color:var(--mute);text-decoration:none;font-size:.66rem;position:relative;letter-spacing:.02em}
+.tabbar a span{font-size:1.35rem;line-height:1.2;transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.tabbar a.on{color:var(--gold)}
+.tabbar a.on span{transform:translateY(-3px) scale(1.18)}
+.tabbar a::before{content:"";position:absolute;top:0;left:28%;right:28%;height:2px;background:var(--gold);border-radius:2px;transform:scaleX(0);transition:transform .4s var(--e)}
+.tabbar a.on::before{transform:scaleX(1)}
+@media(min-width:900px){.tabbar{display:none}}
+@media(max-width:899px){main,footer{padding-bottom:calc(62px + env(safe-area-inset-bottom,0px))}footer{margin-bottom:0}}
+.pn{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--line);max-width:1100px;margin-inline:auto}
+.pn .sw-hint{width:100%;text-align:center;color:var(--mute);font-size:.8rem;margin-top:.6rem}
+@media(min-width:900px){.pn .sw-hint{display:none}}
+
+/* side thermometer */
+#thermo{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:30;display:none;flex-direction:column;align-items:center;gap:.5rem;pointer-events:none}
+@media(min-width:1000px){#thermo{display:flex}}
+#thermo .tube{width:12px;height:38vh;border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.35);position:relative;overflow:hidden}
+#thermo .mer{position:absolute;left:0;right:0;bottom:0;height:100%;background:var(--tc,#f0a070);transition:height .2s,background .3s;border-radius:8px}
+#thermo .bulb{width:24px;height:24px;border-radius:50%;background:var(--tc,#f0a070);margin-top:-14px;box-shadow:0 0 18px var(--tc,#f0a070);transition:background .3s}
+#thermo b{font:500 .8rem Jost;color:var(--tc,#f0a070)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.4rem;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0b1722;border:0;padding:1rem 2rem;min-height:50px;border-radius:3rem;font:500 1rem Jost,sans-serif;cursor:pointer;text-decoration:none;margin:.3rem .5rem .3rem 0;position:relative;overflow:hidden;transition:transform .25s var(--e),box-shadow .3s;box-shadow:0 8px 24px rgba(212,182,118,.18)}
+.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,70%{left:-60%}100%{left:130%}}
+.btn:hover{box-shadow:0 12px 34px rgba(212,182,118,.35)}
+.btn:active{transform:scale(.95)!important}
+.btn.ghost{background:none;color:var(--gold);border:1px solid var(--gold);box-shadow:none}
+.btn.ghost::after{display:none}
+.btn[disabled]{opacity:.45;cursor:default}
+
+/* ---------- hero ---------- */
+.hero{min-height:calc(100svh - 190px);display:flex;align-items:center;margin:-2.6rem -1.4rem 0;padding:2.5rem 1.4rem 3rem;overflow:hidden;background:radial-gradient(ellipse at 78% 40%,rgba(196,230,238,.16),transparent 60%),radial-gradient(ellipse at 8% 92%,rgba(212,182,118,.12),transparent 55%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(196,230,238,.09),transparent 70%)}
+.hg{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;width:100%;max-width:1100px;margin:0 auto;position:relative;z-index:2}
+@media(max-width:860px){.hg{grid-template-columns:1fr;gap:2rem}}
+.hero h1 .wd{display:inline-block;white-space:nowrap}
+.js .hero h1 .ch{display:inline-block;opacity:0;filter:blur(14px);transform:translateY(.45em) rotate(10deg) scale(1.2);animation:chin 1.1s var(--e) forwards;animation-delay:calc(var(--i)*30ms + .55s)}
+@keyframes chin{60%{filter:blur(0)}to{opacity:1;filter:none;transform:none}}
+.hero h1 .ice{color:var(--ice);font-style:italic}
+.scroll-cue{position:absolute;left:50%;bottom:1.6rem;transform:translateX(-50%);z-index:3;width:26px;height:42px;border:1px solid var(--gold);border-radius:14px}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--gold);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(16px)}}
+
+/* 3D fridge */
+.stage3d{perspective:1100px;display:flex;flex-direction:column;align-items:center;position:relative}
+.fr{position:relative;width:min(270px,62vw);aspect-ratio:6/10;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s var(--e);border:0;background:none;padding:0;cursor:pointer;display:block;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{translate:0 -10px}}
+.fr.dance{animation:dance 1.5s ease-in-out}
+@keyframes dance{0%,100%{translate:0 0;rotate:0deg}15%{rotate:-9deg;translate:0 -24px}30%{rotate:9deg;translate:0 0}45%{rotate:-9deg;translate:0 -24px}60%{rotate:9deg;translate:0 0}80%{rotate:0deg;scale:1.1}}
+.fin{position:absolute;inset:0;border-radius:22px;background:linear-gradient(#10303d,#0a1c26);overflow:hidden;box-shadow:inset 0 0 0 7px #cfd4d8,inset 0 0 30px #000,0 30px 60px #000a;display:flex;flex-direction:column;justify-content:space-evenly;padding:1.5rem 1rem}
+.fin::before{content:"";position:absolute;inset:7px;border-radius:16px;background:radial-gradient(ellipse at 50% 8%,#ffffff 0%,#d4f0f6 35%,#86c2d3 100%);opacity:0}
+.fr.open .fin::before{animation:flick .8s steps(1) .3s forwards}
+@keyframes flick{0%{opacity:.6}12%{opacity:.08}26%{opacity:.85}40%{opacity:.3}55%,100%{opacity:1}}
+.fin>*{position:relative;z-index:1}
+.shelf{display:flex;justify-content:space-around;align-items:flex-end;border-bottom:3px solid rgba(255,255,255,.55);padding-bottom:.3rem;min-height:3.2rem}
+.shelf.drawer{border:2px solid rgba(255,255,255,.6);border-radius:8px;background:rgba(255,255,255,.15);padding:.3rem}
+.it{font-size:clamp(1.5rem,6vw,2.1rem);line-height:1;display:inline-block;transform:scale(0)}
+.fr.open .it{animation:pop .7s var(--e) both;animation-delay:calc(.55s + var(--i)*80ms)}
+@keyframes pop{0%{transform:scale(0) translateY(20px)}60%{transform:scale(1.35)}100%{transform:scale(1)}}
+.door{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transform:translateZ(2px);transition:transform 1.1s cubic-bezier(.3,.7,.2,1)}
+.fr.open .door{transform:translateZ(2px) rotateY(-118deg)}
+.df,.db{position:absolute;inset:0;border-radius:22px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.df{background:linear-gradient(135deg,#f1f3f5,#9aa4ac 55%,#d6dade);box-shadow:inset 0 0 0 1px #fff7,0 28px 60px #0009;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#2a3640}
+.df .lb{font:600 3rem/1 "Cormorant Garamond",serif}
+.df small{font:500 .7rem Jost;letter-spacing:.22em;margin-top:.4rem}
+.df::after{content:"";position:absolute;right:14px;top:30%;width:10px;height:28%;border-radius:6px;background:linear-gradient(var(--gold),var(--gold2));box-shadow:0 2px 6px #0005}
+.df::before{content:"";position:absolute;inset:0;border-radius:22px;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,transparent 60%);background-size:250% 100%;animation:gloss 5s ease-in-out infinite}
+@keyframes gloss{0%,60%{background-position:120% 0}100%{background-position:-60% 0}}
+.mag{position:absolute;font-size:1.3rem;filter:drop-shadow(0 3px 3px #0006);animation:wob 3s ease-in-out infinite}
+.mag:nth-of-type(2){animation-delay:-1s}.mag:nth-of-type(3){animation-delay:-2s}
+@keyframes wob{50%{transform:rotate(12deg)}}
+.db{transform:rotateY(180deg);background:linear-gradient(#e1e6e9,#b2bbc1);display:flex;flex-direction:column;justify-content:space-evenly;padding:1rem .9rem;box-shadow:inset 0 0 0 5px #cfd4d8}
+.db div{border-bottom:5px solid #8f99a1;text-align:center;font-size:1.35rem;border-radius:0 0 4px 4px}
+.fshadow{width:80%;height:26px;margin-top:-6px;border-radius:50%;background:radial-gradient(rgba(0,0,0,.6),transparent 70%);animation:shad 6s ease-in-out infinite}
+@keyframes shad{50%{transform:scale(.88);opacity:.7}}
+.mist{position:absolute;bottom:16%;left:50%;width:80px;height:80px;border-radius:50%;background:radial-gradient(rgba(220,245,250,.75),transparent 70%);pointer-events:none;animation:mist 2.4s ease-out forwards;z-index:5}
+@keyframes mist{from{opacity:.9;transform:translate(-50%,0) scale(.5)}to{opacity:0;transform:translate(calc(-50% + var(--dx)),70px) scale(2.8)}}
+.hint{text-align:center;color:var(--gold);font-size:.9rem;margin:1rem auto 0;max-width:30ch;min-height:3em}
+.quip{position:absolute;left:50%;top:-12px;transform:translateX(-50%);background:var(--gold);color:#0b1722;font:500 .82rem Jost,sans-serif;padding:.3rem .8rem;border-radius:2rem;white-space:nowrap;pointer-events:none;z-index:8;animation:qp 1.6s ease-out forwards}
+@keyframes qp{from{opacity:0;translate:0 10px}15%{opacity:1;translate:0 0}to{opacity:0;translate:0 -38px}}
+
+/* ticker */
+.ticker{margin:0 -1.4rem;overflow:hidden;white-space:nowrap;border-block:1px solid var(--line);padding:1rem 0;color:var(--gold);font:1.5rem "Cormorant Garamond",Georgia,serif;background:#08121a;position:relative;z-index:1}
+.ticker div{display:inline-block;animation:tk 45s linear infinite}
+.ticker span{padding:0 1.2rem}.ticker span::after{content:"❄";margin-left:2.4rem;color:var(--ice);font-size:.9em}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin:1rem 0 0}
+.stat{border-top:1px solid var(--line);padding-top:1.2rem}
+.stat b{display:block;font:400 clamp(3.2rem,10vw,5rem) "Cormorant Garamond",Georgia,serif;color:var(--ice);line-height:1}
+.stat small{color:var(--mute);font-size:.95rem}
+
+/* ---------- problem ---------- */
+#problem{transition:background 1.2s}
+input.need{border-color:#e07a5f;animation:shk .45s}
+#sst{font-size:.95rem;color:var(--mute);min-height:1.5em;margin:.6rem auto 0}
+#sst.ok{color:var(--ice)}#sst.err{color:#e9a08a}
+#problem.cold{background:radial-gradient(ellipse at 50% 30%,rgba(127,196,214,.12),transparent 70%)}
+#problem.warm{background:radial-gradient(ellipse at 50% 30%,rgba(240,160,112,.10),transparent 70%)}
+.vs{display:grid;grid-template-columns:1.6fr 1fr 1fr;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:2rem 0 1rem;background:rgba(0,0,0,.2)}
+.vs>div{padding:.9rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:center}
+.vs>div:nth-last-child(-n+3){border-bottom:0}
+.vs .h{color:var(--gold);font-weight:400;font-size:.9rem;letter-spacing:.06em;justify-content:center;text-align:center}
+.vs .c{justify-content:center;font-size:1.4rem}
+.js .vs .c span{display:inline-block;transform:scale(0) rotate(-90deg);transition:transform .6s cubic-bezier(.3,1.6,.5,1);transition-delay:var(--d)}
+.vs.in .c span{transform:none}
+@media(max-width:560px){.vs{grid-template-columns:1.3fr .8fr .8fr;font-size:.9rem}.vs>div{padding:.7rem .6rem}}
+.sw{display:flex;align-items:center;gap:1rem;justify-content:center;margin:3rem 0 2rem;font-weight:400;flex-wrap:wrap}
+.sw span{transition:color .3s;color:var(--mute)}
+.sw span.on{color:var(--ink)}
+.tg{width:86px;height:44px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(90deg,#5a3424,#3a2a22);position:relative;cursor:pointer;transition:background .5s}
+.tg i{position:absolute;top:4px;left:4px;width:34px;height:34px;border-radius:50%;background:var(--warm);transition:transform .5s cubic-bezier(.5,1.6,.4,1),background .5s;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:1.1rem}
+.tg[aria-checked=true]{background:linear-gradient(90deg,#1d4655,#2b6576)}
+.tg[aria-checked=true] i{transform:translateX(42px);background:var(--ice)}
+.day{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;perspective:1000px}
+@media(max-width:900px){.day{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.day{grid-template-columns:1fr}}
+.di{border:1px solid var(--line);border-radius:10px;padding:1.3rem;background:rgba(0,0,0,.22);position:relative;transform-origin:50% 50%}
+.di.flip{animation:dflip .6s ease-in-out}
+@keyframes dflip{50%{transform:rotateX(90deg)}}
+.di .t{font:500 .8rem Jost;letter-spacing:.15em;color:var(--gold)}
+.di .em{font-size:2.6rem;display:block;margin:.4rem 0;animation:mh 2.4s ease-in-out infinite}
+.di p{margin:0;font-size:.95rem}
+.di .dg{position:absolute;top:1rem;right:1rem;font:500 .8rem Jost;padding:.15rem .6rem;border-radius:2rem;border:1px solid currentColor;color:var(--warm);transition:color .4s}
+.cold .di .dg{color:var(--ice)}
+@keyframes mh{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ---------- letter ---------- */
+.letter{position:relative;padding-top:2rem}
+.env{position:absolute;left:50%;top:0;width:min(440px,86%);aspect-ratio:1.6;transform:translateX(-50%);z-index:4;background:linear-gradient(#efe5cf,#dfd2b4);border-radius:6px;box-shadow:0 30px 60px #0009;pointer-events:none;display:none}
+.js .env{display:block}
+.env::before{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent 49.5%,#cfc19f 50%,transparent 50.5%),linear-gradient(to top left,transparent 49.5%,#cfc19f 50%,transparent 50.5%);opacity:.6}
+.flap{position:absolute;left:0;right:0;top:0;height:58%;background:linear-gradient(#e6dabd,#d6c7a5);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s var(--e);z-index:2}
+.seal{position:absolute;left:50%;top:58%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d0574a,#8d2a20);color:#f6d9c8;display:flex;align-items:center;justify-content:center;font-size:1.4rem;z-index:3;box-shadow:0 3px 8px #0006;transition:transform .5s,opacity .4s}
+.letter.in .seal{transform:scale(1.4) rotate(40deg);opacity:0}
+.letter.in .flap{transform:rotateX(180deg);transition-delay:.35s}
+.letter.in .env{animation:envout .9s var(--e) 1s forwards}
+@keyframes envout{to{transform:translateX(-50%) translateY(90px) scale(.75);opacity:0;visibility:hidden}}
+.paper{background:#f6f0e1;color:#2a2418;padding:clamp(1.6rem,5vw,3.4rem);border-radius:3px;box-shadow:0 30px 70px #000a;transform:rotate(-.4deg);transform-origin:50% 0;position:relative;font:400 1.15rem/1.8 "Cormorant Garamond",Georgia,serif;margin:1.5rem 0;background-image:repeating-linear-gradient(transparent 0 2.05rem,rgba(42,36,24,.05) 2.05rem 2.1rem)}
+.js .paper{opacity:0}
+.letter.in .paper{animation:unfold 1.2s var(--e) 1.15s forwards}
+@keyframes unfold{from{opacity:0;transform:perspective(1300px) rotateX(-75deg) translateY(-30px)}to{opacity:1;transform:rotate(-.4deg)}}
+.paper h2{color:#2a2418;font-size:clamp(1.8rem,5vw,2.8rem);padding-right:7rem}
+@media(max-width:560px){.paper h2{padding-right:0;padding-top:2.4rem}}
+.paper p{color:#3a3324;max-width:none;font-size:1.22rem}
+.js .paper p{opacity:0}
+.letter.in .paper p{animation:fu .8s var(--e) forwards;animation-delay:calc(1.7s + var(--i)*.14s)}
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sig{margin-top:1.4rem;position:relative;display:inline-block}
+.sgt{font:italic 1.9rem "Cormorant Garamond",serif;color:#1f2a55;display:block}
+.js .sgt{clip-path:inset(0 100% 0 0)}
+.sig.in .sgt{animation:write 1.8s ease-in-out .4s forwards}
+@keyframes write{to{clip-path:inset(0 0 0 0)}}
+.sig svg{display:block;width:220px;height:26px;margin-top:-6px}
+.sig path{fill:none;stroke:#1f2a55;stroke-width:2;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300}
+.sig.in path{transition:stroke-dashoffset 1s ease 2.1s;stroke-dashoffset:0}
+.sig .who{font:400 1.05rem "Cormorant Garamond",serif;color:#3a3324}
+.st{position:absolute;right:1.2rem;top:1.2rem;color:#b4382b!important;border-color:#b4382b!important;font-size:1.15rem!important;padding:.2rem .8rem!important;opacity:0}
+.letter.in .st{animation:slam .55s cubic-bezier(.2,1.5,.4,1) 2.6s both}
+.stamp{display:inline-block;border:4px solid var(--gold);color:var(--gold);padding:.3rem 1.2rem;font:600 clamp(1.5rem,6vw,2.5rem) "Cormorant Garamond",Georgia,serif;letter-spacing:.08em;border-radius:8px;transform:rotate(-8deg);animation:slam .55s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes slam{from{transform:rotate(-24deg) scale(3);opacity:0}to{transform:rotate(-8deg) scale(1);opacity:1}}
+
+/* ---------- arguments ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0 2rem}
+.chip{border:1px solid var(--line);background:none;color:var(--mute);padding:.55rem 1.1rem;border-radius:2rem;cursor:pointer;font-size:.92rem;transition:all .3s;min-height:44px}
+.chip.on{background:var(--gold);color:#0b1722;border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem}
+.card{border:1px solid var(--line);border-radius:12px;padding:1.5rem;background:linear-gradient(160deg,rgba(255,255,255,.035),rgba(0,0,0,.25));position:relative;overflow:hidden;transform-style:preserve-3d;transition:opacity .35s,transform .35s,border-color .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(300px circle at var(--gx,50%) var(--gy,0%),rgba(212,182,118,.16),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card:hover{border-color:rgba(212,182,118,.6)}
+.card.out{opacity:0;transform:scale(.9)}
+.card .ic{font-size:2.4rem;display:inline-block;margin-bottom:.5rem;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.card:hover .ic{transform:scale(1.25) rotate(-10deg)}
+.card .cat{position:absolute;top:1.1rem;right:1.1rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:.8}
+.card p{margin:0;font-size:.97rem}
+.card a{color:var(--gold)}
+
+/* slot */
+.slotw{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;margin-top:1.5rem}
+@media(max-width:700px){.slotw{grid-template-columns:1fr}}
+.mach{background:linear-gradient(160deg,#2a3a46,#121f29);border:1px solid var(--line);border-radius:18px;padding:1rem;box-shadow:inset 0 2px 0 #fff1,0 20px 40px #0008;width:min(360px,100%)}
+.reel{height:96px;overflow:hidden;border-radius:10px;background:#f4efe4;position:relative;box-shadow:inset 0 10px 14px -6px #0007,inset 0 -10px 14px -6px #0007}
+.reel ul{list-style:none;margin:0;padding:0;will-change:transform}
+.reel li{height:96px;display:flex;align-items:center;gap:.8rem;padding:0 1.1rem;color:#0b1722;font:600 1.35rem/1.1 "Cormorant Garamond",serif}
+.reel li span{font-size:2.2rem}
+.lights{display:flex;justify-content:space-between;margin:.7rem .3rem 0}
+.lights i{width:10px;height:10px;border-radius:50%;background:#5a4a2a}
+.mach.go .lights i{animation:blink .3s steps(1) infinite;animation-delay:calc(var(--i)*.06s)}
+@keyframes blink{50%{background:var(--gold);box-shadow:0 0 10px var(--gold)}}
+#slotd{min-height:5em}
+#slotd.land{animation:land .5s}
+@keyframes land{0%{transform:scale(.95) rotate(-1deg)}50%{transform:scale(1.03) rotate(1deg)}100%{transform:none}}
+
+/* concerns flip */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.1rem}
+.flipc{perspective:1100px;border:0;background:none;padding:0;text-align:left;cursor:pointer;color:inherit;font:inherit}
+.fc{display:grid;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.4,.2,.2,1);min-height:250px}
+.fc>div{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:1.5rem;border:1px solid var(--line);display:flex;flex-direction:column}
+.front{background:linear-gradient(160deg,#3a2a22,#1a1512);}
+.front .q{font:italic 1.6rem/1.25 "Cormorant Garamond",serif;color:var(--ink);margin:.6rem 0 auto}
+.front .em{font-size:2.2rem}
+.front small,.back small{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}
+.front .tap{color:var(--warm);font-size:.85rem;margin-top:1rem}
+.back{transform:rotateY(180deg);background:linear-gradient(160deg,#16394a,#0c2230);border-color:rgba(196,230,238,.35)}
+.back p{margin:.5rem 0 0;color:#d5e6ec;font-size:.97rem}
+.back h4{color:var(--ice);margin-top:.4rem}
+.flipc.on .fc{transform:rotateY(180deg)}
+.flipc:hover:not(.on) .fc{transform:rotateY(10deg)}
+
+/* facts */
+.row{display:flex;gap:1.3rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--line)}
+.row .em{font-size:2rem;flex:none;width:3.2rem;height:3.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(196,230,238,.08);border:1px solid rgba(196,230,238,.25)}
+.row h4{color:var(--gold)}
+.row p{margin:0}
+sup a{color:var(--gold);text-decoration:none}
+.box{border:1px solid var(--line);padding:1.6rem;background:rgba(0,0,0,.25);border-radius:12px;margin:1.2rem 0}
+.box label{display:block;margin:1.1rem 0;color:var(--mute)}
+input[type=range]{width:100%;accent-color:#d4b676;height:32px}
+input[type=text]{width:100%;padding:.9rem 1rem;border-radius:8px;border:1px solid var(--line);background:#08121a;color:var(--ink);font:300 1rem Jost,sans-serif;min-height:48px}
+.meter{height:22px;background:rgba(0,0,0,.4);border-radius:12px;overflow:hidden;margin:.8rem 0}
+.meter i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#e07a5f,var(--gold),var(--ice));transition:width .4s var(--e)}
+#df{display:inline-block;font-size:2.6rem;vertical-align:middle;transition:transform .3s}
+#df.bump{animation:bump .35s}
+@keyframes bump{50%{transform:scale(1.35) rotate(-8deg)}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.bottle{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap}
+.bottle svg{width:110px;height:auto;overflow:visible}
+#liq{transition:fill .2s}
+#frost{transition:opacity .4s}
+.drop{opacity:0}
+.cold-b .drop{animation:drip 2.4s ease-in infinite}
+@keyframes drip{0%{opacity:0;transform:translateY(0)}20%{opacity:.9}100%{opacity:0;transform:translateY(60px)}}
+.deg{font:400 4rem "Cormorant Garamond",Georgia,serif;line-height:1;color:var(--tc,#f0a070)}
+.rules{list-style:none;padding:0;margin:0}
+.rules li{padding:1rem 0 1rem 3rem;position:relative;border-bottom:1px solid var(--line);color:var(--mute)}
+.rules li::before{content:"§";position:absolute;left:.4rem;top:.7rem;color:var(--gold);font:1.6rem "Cormorant Garamond",Georgia,serif}
+.src li::before{content:counter(s);counter-increment:s;font:500 .85rem Jost;top:1.15rem;left:.6rem;width:1.6rem;height:1.6rem;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.src{counter-reset:s}
+.quote{border-left:3px solid var(--gold);padding:.3rem 0 .3rem 1.4rem;margin:2.5rem 0;font:italic clamp(1.5rem,4vw,2rem)/1.3 "Cormorant Garamond",Georgia,serif;color:var(--ink)}
+.quote small{display:block;font:300 .9rem Jost,sans-serif;color:var(--mute);margin-top:.5rem;font-style:normal}
+
+/* offer */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:440px}
+td,th{padding:.95rem 1rem;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--gold);font-weight:400}
+tr.rw td{transition:background .3s}
+tr.rw:hover td{background:rgba(212,182,118,.06)}
+td.z{font:500 1.05rem Jost;color:var(--ice)}
+.gar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.gar>div{text-align:center;padding:1.6rem 1rem;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.2)}
+.seal2{width:84px;height:84px;margin:0 auto .8rem;border-radius:50%;border:2px dashed var(--gold);display:flex;align-items:center;justify-content:center;font-size:2.2rem;animation:spinS 22s linear infinite}
+.seal2 span{animation:spinS 22s linear infinite reverse}
+.gar h4{color:var(--gold);font-size:1.3rem}
+.gar p{margin:0 auto;font-size:.92rem}
+.db-bars{margin-top:1rem}
+.dbr{display:grid;grid-template-columns:minmax(120px,1.1fr) 3fr;gap:1rem;align-items:center;margin:.7rem 0;font-size:.95rem}
+.dbr .tr{height:30px;background:rgba(0,0,0,.35);border-radius:8px;overflow:hidden}
+.dbr .fl{height:100%;width:var(--v);background:linear-gradient(90deg,var(--ice2),var(--gold));border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:.6rem;color:#0b1722;font-weight:500;font-size:.85rem;transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--e);transition-delay:var(--d)}
+.dbr.us .fl{background:linear-gradient(90deg,#9fe0ef,#e8fbff);box-shadow:0 0 18px rgba(196,230,238,.5)}
+.db-bars.in .fl{transform:none}
+@media(max-width:560px){.dbr{grid-template-columns:1fr;gap:.3rem}}
+.eq{display:flex;gap:6px;align-items:flex-end;height:54px;margin:1rem 0}.eq i{width:10px;height:10px;background:var(--gold);border-radius:3px}.eq.on i{animation:eqa .45s ease-in-out infinite alternate}.eq.on i:nth-child(odd){animation-delay:.15s}.eq.on i:nth-child(3n){animation-delay:.3s}@keyframes eqa{to{height:34px}}
+.big{font:400 3.8rem "Cormorant Garamond",Georgia,serif;color:var(--ice);line-height:1;display:inline-block}
+.big.pulse{animation:pls .3s}
+@keyframes pls{50%{transform:scale(1.06);color:#fff}}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+@media(max-width:560px){.calc{grid-template-columns:1fr}}
+
+/* timeline */
+.tl{position:relative;margin-top:3rem;padding-left:0}
+.tl .line{position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--line)}
+.tl .line i{position:absolute;inset:0;background:linear-gradient(var(--gold),var(--ice));transform-origin:top;transform:scaleY(var(--p,0))}
+.tl .rider{position:absolute;left:50%;top:calc(var(--p,0)*100%);width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--bg);border:1px solid var(--ice);display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 0 20px rgba(196,230,238,.4);z-index:2}
+.step{width:calc(50% - 3rem);padding:1.3rem 1.5rem;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.25);margin-bottom:2rem;position:relative}
+.step:nth-of-type(odd){margin-left:auto}
+.step b{font:500 .78rem Jost;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+.step p{margin:.3rem 0 0}
+.step::before{content:"";position:absolute;top:1.6rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--gold);transition:background .4s,box-shadow .4s}
+.step:nth-of-type(odd)::before{left:calc(-3rem - 8px)}
+.step:nth-of-type(even)::before{right:calc(-3rem - 8px)}
+.step.lit::before{background:var(--gold);box-shadow:0 0 14px var(--gold)}
+@media(max-width:760px){.tl .line,.tl .rider{left:12px}.step{width:auto;margin-left:3rem!important}.step:nth-of-type(even)::before,.step:nth-of-type(odd)::before{left:calc(-3rem + 4px);right:auto}}
+
+/* team + wheel */
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.team>div{padding:1.5rem;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.2)}
+.team .em{font-size:2.6rem;display:inline-block}
+.team>div:nth-child(1) .em{animation:mh 2s ease-in-out infinite}
+.team>div:nth-child(2) .em{animation:wb2 1.6s ease-in-out infinite}
+.team>div:nth-child(3) .em{animation:zm 2.2s ease-in-out infinite}
+@keyframes wb2{50%{transform:rotate(-18deg)}}
+@keyframes zm{50%{transform:scale(1.2)}}
+.wheelw{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center}
+@media(max-width:760px){.wheelw{grid-template-columns:1fr;justify-items:center}}
+.wheel{position:relative;width:min(320px,78vw);aspect-ratio:1}
+.wheel canvas{width:100%;height:100%;border-radius:50%;box-shadow:0 0 0 6px #1a2c38,0 0 0 7px var(--gold),0 20px 50px #0009;transition:transform 4.8s cubic-bezier(.12,.75,.18,1)}
+.wheel::before{content:"";position:absolute;left:50%;top:-14px;margin-left:-14px;border:14px solid transparent;border-top:24px solid var(--gold);z-index:3;filter:drop-shadow(0 3px 3px #0008)}
+.wheel::after{content:"🧽";position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px;border-radius:50%;background:var(--bg);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+#nw{font-size:clamp(1.8rem,5vw,2.6rem);min-height:1.3em;margin:1rem 0 0}
+
+/* contract */
+.contract{background:linear-gradient(#f6f0e1,#efe6d0);color:#2a2418;border-radius:4px;padding:clamp(1.5rem,5vw,3rem);box-shadow:0 30px 70px #000a;position:relative}
+.contract h3{color:#2a2418;font-size:2rem}
+.contract p{color:#3a3324;max-width:none}
+.ck{list-style:none;padding:0;margin:1rem 0}
+.ck li{display:flex;gap:.9rem;align-items:flex-start;padding:.55rem 0;border-bottom:1px dashed rgba(42,36,24,.2);font:400 1.15rem/1.4 "Cormorant Garamond",serif}
+.ck svg{flex:none;width:24px;height:24px;margin-top:.1rem}
+.ck rect{fill:none;stroke:#2a2418;stroke-width:1.5}
+.ck path{fill:none;stroke:#2f7a3b;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30;transition:stroke-dashoffset .5s ease;transition-delay:var(--d)}
+.ck.in path{stroke-dashoffset:0}
+.clause{border:2px solid #b4382b;color:#7a2219!important;padding:1rem 1.2rem;border-radius:6px;margin-top:1.4rem;font:italic 1.15rem/1.5 "Cormorant Garamond",serif}
+
+/* marquee */
+.mq{overflow:hidden;margin:2rem -1.4rem;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mq .tr{display:flex;gap:1rem;width:max-content;animation:tk 60s linear infinite;padding:.5rem 0}
+.mq .tr.rev{animation-direction:reverse;animation-duration:70s}
+.mq:hover .tr{animation-play-state:paused}
+.qc{width:320px;flex:none;padding:1.2rem 1.4rem;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.25);font:italic 1.25rem/1.35 "Cormorant Garamond",serif;color:var(--ink)}
+.qc small{display:block;margin-top:.6rem;font:400 .85rem Jost;color:var(--gold);font-style:normal}
+
+/* finale */
+.ballot label{display:flex;align-items:center;gap:.9rem;padding:.9rem 1rem;border:1px solid var(--line);border-radius:8px;margin:.6rem 0;cursor:pointer;color:var(--ink);min-height:52px;transition:all .25s}
+.ballot label:hover{border-color:var(--gold);transform:translateX(6px)}
+.ballot input{accent-color:#d4b676;width:22px;height:22px}
+.ballot.done label{opacity:.5;cursor:default;transform:none}
+.ballot.done label.mine{opacity:1;border-color:var(--gold);background:rgba(212,182,118,.12)}
+#sg{width:100%;height:170px;display:block;background:#08121a;border:1px dashed var(--gold);border-radius:8px;touch-action:none;cursor:crosshair}
+.decide{text-align:center}
+.decide p{margin-inline:auto}
+.stage{position:relative;height:150px;max-width:520px;margin:1.5rem auto}
+.stage button{position:absolute;top:44px}
+#yes{left:4%;font-size:1.1rem;padding:1.1rem 2.4rem;animation:beat 1.6s ease-in-out infinite}
+@keyframes beat{0%,100%{box-shadow:0 0 0 0 rgba(212,182,118,.5)}50%{box-shadow:0 0 0 16px rgba(212,182,118,0)}}
+#no{right:4%;background:none;color:var(--mute);border:1px solid var(--mute);box-shadow:none;transition:left .18s,top .18s,transform .18s,opacity .3s}
+#no::after{display:none}
+#msg{min-height:7rem;font:1.8rem "Cormorant Garamond",Georgia,serif;color:var(--ice)}
+#msg p{font-size:1.25rem;color:var(--ink)}
+.shake{animation:shk .5s}
+@keyframes shk{20%{transform:translate(-6px,3px)}40%{transform:translate(6px,-3px)}60%{transform:translate(-4px,2px)}80%{transform:translate(3px,-1px)}}
+.fl{position:fixed;top:-50px;z-index:70;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+.spark{position:fixed;z-index:70;pointer-events:none;color:var(--ice);animation:spark .9s ease-out forwards}
+@keyframes spark{to{transform:translate(var(--sx),var(--sy)) scale(.3) rotate(180deg);opacity:0}}
+footer{text-align:center;color:#7c8c97;font-size:.85rem;padding:2.5rem 1.2rem 3rem;border-top:1px solid var(--line);background:#08121a}
+footer b{font-weight:400;color:#9aa9b4}
+.sep{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0}
+
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
+.js [data-a],.js .paper,.js .paper p{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
+.js .sp .w>span,.it,.js .vs .c span{transform:none!important}
+.js .hero h1 .ch{opacity:1;filter:none;transform:none}
+.js .sgt{clip-path:none}.sig path{stroke-dashoffset:0}.ck path{stroke-dashoffset:0}.dbr .fl{transform:none}
+#fx,.js .env,#snow{display:none!important}.st{opacity:1}
+}
+</style>
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+<canvas id="conf" aria-hidden="true"></canvas>
+<div id="fx" class="on m-double" aria-hidden="true"><div class="fxd l"><i class="hd"></i></div><div class="fxd r"><i class="hd"></i></div><div class="fxd s"><i class="hd"></i></div><div class="fxd t"><i class="hd"></i></div><div id="fxl"></div></div>
+<div id="fxg" aria-hidden="true"></div><div id="sweep" aria-hidden="true"></div></div>
+
+<header id="hd">
+<div class="hrow"><a class="logo" href="#start">10c <span>❄</span> Kühlschrank</a><nav class="chn" id="chn" aria-label="Kapitel"></nav>
+<div class="temp" id="tp" title="Je weiter ihr kommt, desto kälter wird es">🌡 <b id="tv">30</b>°C</div></div>
+<nav class="subs" id="subs" aria-label="Seiten in diesem Kapitel"></nav>
+<div id="bar"></div>
+</header>
+<nav class="tabbar" id="tabbar" aria-label="Kapitel"></nav>
+<div id="thermo" aria-hidden="true"><b id="thv">30°</b><div class="tube"><div class="mer" id="mer"></div></div><div class="bulb"></div></div>
+
+<main>
+<!-- HERO -->
+<section class="page" id="start"><div class="hero">
+<div class="hg">
+<div>
+<p class="tag" data-a="clip" style="--d:1s">Ein Antrag der Klasse 10c · Hugo-Höfler-Realschule</p>
+<h1 id="h1">Mini-Kühlschrank im <span class="ice">Klassenzimmer</span></h1>
+<p class="lead" data-a="up" style="--d:1.9s">Wir bitten Herrn Wolk um einen kleinen Kühlschrank für unseren Klassenraum: <span class="hl">auf unsere Kosten</span>, mit klaren Regeln, einer Testphase und einem Plan für jeden Fall.</p>
+<p data-a="up" style="--d:2.05s;font-size:.9rem">Im Auftrag der Klasse 10c: Jonathan Müller und Moritz Ebner</p>
+<div data-a="up" style="--d:2.2s"><a class="btn mag-b" href="#brief">Den Brief lesen ✉️</a><a class="btn ghost mag-b" href="#bedenken">Ihre Bedenken, unsere Lösungen</a></div>
+</div>
+<div class="stage3d" id="st3" data-a="zoom" style="--d:1.4s">
+<button class="fr" id="fr" aria-label="Kühlschranktür öffnen">
+<div class="fin">
+<div class="shelf"><span class="it" style="--i:0">🥤</span><span class="it" style="--i:1">🧃</span><span class="it" style="--i:2">💧</span></div>
+<div class="shelf"><span class="it" style="--i:3">🥪</span><span class="it" style="--i:4">🧀</span></div>
+<div class="shelf"><span class="it" style="--i:5">🥛</span><span class="it" style="--i:6">🍓</span><span class="it" style="--i:7">🥗</span></div>
+<div class="shelf drawer"><span class="it" style="--i:8">🍎</span><span class="it" style="--i:9">🥕</span><span class="it" style="--i:10">🍇</span></div>
+</div>
+<div class="door">
+<div class="df"><span class="mag" style="top:12%;left:16%">❄</span><span class="mag" style="top:18%;left:52%">🏫</span><span class="mag" style="bottom:16%;left:22%">⭐</span><span class="lb">10c</span><small>KLASSENKÜHLSCHRANK</small></div>
+<div class="db"><div>🧃 🥤</div><div>🧈 🥚</div><div>💧 💧</div></div>
+</div>
+</button>
+<div class="fshadow"></div>
+<p class="hint" id="hint">Tür antippen. Mehrmals, wenn ihr euch traut.</p>
+</div>
+</div>
+</div>
+
+<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+
+<div class="w blk" id="zahlen">
+<p class="tag" data-a="clip">Auf einen Blick</p>
+<h2 class="sp">Vier Zahlen, ein Vorschlag.</h2>
+<div class="stats">
+<div class="stat" data-a="up" style="--d:0s"><b data-n="0">0</b><small>Euro Anschaffungskosten für die Schule</small></div>
+<div class="stat" data-a="up" style="--d:.1s"><b data-n="100" data-s=" %">0</b><small>der Verantwortung liegen bei uns</small></div>
+<div class="stat" data-a="up" style="--d:.2s"><b data-n="8" data-s=" °C">0</b><small>Zieltemperatur für Getränke und Essen</small></div>
+<div class="stat" data-a="up" style="--d:.3s"><b data-n="2">0</b><small>Beanstandungen, und er kommt wieder weg. Versprochen.</small></div>
+</div>
+</div></section>
+
+<!-- PROBLEM -->
+<section class="page warm" id="problem"><div class="w">
+<p class="tag" data-a="clip">Das Problem</p>
+<h2 class="sp">Lauwarm ist keine Lösung.</h2>
+<p class="lead" data-a="up">Unsere Schule hat Wasserspender, und die sind super. Aber eigene Getränke, Pausenbrote oder Joghurt kann man dort nicht kühl aufbewahren. Der Kühlschrank ersetzt also nichts. <span class="hl">Er schließt eine Lücke.</span></p>
+<div class="vs" id="vs" data-a="up">
+<div class="h" style="justify-content:flex-start">Was wir brauchen</div><div class="h">Wasser&shy;spender</div><div class="h">Mini-Kühl&shy;schrank</div>
+</div>
+<div class="sw"><span id="s0" class="on">Ohne Kühlschrank</span><button class="tg" id="tgl" role="switch" aria-checked="false" aria-label="Kühlschrank ein- oder ausschalten"><i>🔥</i></button><span id="s1">Mit Kühlschrank</span></div>
+<div class="day" id="day"></div>
+</div></section>
+
+
+<!-- BRIEF -->
+<section class="page" id="brief"><div class="w">
+<p class="tag" data-a="clip">Das Schreiben</p>
+<h2 class="sp">Unser Brief an die Schulleitung</h2>
+<div class="letter watch" id="letter">
+<div class="env"><div class="flap"></div><div class="seal">❄</div></div>
+<div class="paper">
+<span class="stamp st">STRENG KÜHL</span>
+<h2>Ein Minikühlschrank für unsere Klasse 10c</h2>
+<p style="--i:0"><b>Sehr geehrter Herr Wolk,</b></p>
+<p style="--i:1">wir, die Klasse 10c, möchten Ihnen einen Vorschlag machen: einen kleinen Minikühlschrank für unseren Klassenraum.</p>
+<p style="--i:2">Gerade an warmen Tagen und bei langen Schultagen mit Nachmittagsunterricht werden mitgebrachte Getränke und Pausenbrote im Rucksack schnell warm. Die Wasserspender an unserer Schule sind eine gute Sache, eigene Getränke oder Essen kann man dort aber nicht kühl aufbewahren. Genau diese Lücke würde ein Kühlschrank schließen.</p>
+<p style="--i:3">Für die Schule soll dabei kein Aufwand entstehen. Wir bezahlen das Gerät selbst, kümmern uns nach einem festen Plan um Befüllen und Reinigung und wählen ein energiesparendes, möglichst leises Modell, das den Unterricht nicht stört. Bevor wir es kaufen, zeigen wir Ihnen das Modell, und Standort und Steckdose stimmen wir mit der Schule ab.</p>
+<p style="--i:4">Außerdem schlagen wir eine Testphase bis zu den nächsten Ferien vor. Danach ziehen wir gemeinsam mit Ihnen Bilanz. Wenn es nicht gut läuft, nehmen wir den Kühlschrank ohne Diskussion wieder mit nach Hause.</p>
+<p style="--i:5">Wir sind überzeugt, dass ein Minikühlschrank unseren Schulalltag angenehmer macht, und würden uns sehr freuen, wenn Sie unserem Vorschlag zustimmen.</p>
+<p style="--i:6">Mit freundlichen Grüßen</p>
+<div class="sig watch"><span class="sgt">Klasse 10c</span><svg viewBox="0 0 220 26" aria-hidden="true"><path d="M4 14 C 40 4, 70 24, 110 12 S 180 4, 216 16"/></svg><span class="who">i.A. Jonathan Müller und Moritz Ebner</span></div>
+</div>
+</div>
+<p style="text-align:center;font-size:.9rem;margin-inline:auto" data-a="up">Anmerkung der Redaktion: Dieser Brief wurde mit einer Rekordmenge Höflichkeit verfasst.</p>
+</div></section>
+
+
+<!-- ARGUMENTE -->
+<section class="page" id="argumente"><div class="w">
+<p class="tag" data-a="clip">Die Beweisführung</p>
+<h2 class="sp">Sechzehn Gründe für ein Ja.</h2>
+<p data-a="up">Sortiert danach, wem sie nützen. Tippt auf eine Kategorie.</p>
+<div class="chips" id="chips" data-a="up"></div>
+<div class="grid" id="args"></div>
+<h2 class="sp" style="margin-top:5rem">Das Argument-Roulette</h2>
+<div class="slotw">
+<div class="mach" id="mach" data-a="flip"><div class="reel"><ul id="reel"></ul></div><div class="lights" id="lights"></div></div>
+<div><div id="slotd"><h3>Keine Lust auf sechzehn Gründe?</h3><p style="margin:0">Dann ziehen wir euch einen.</p></div><button class="btn mag-b" id="spin">Argument ziehen 🎰</button></div>
+</div>
+</div></section>
+
+<!-- BEDENKEN -->
+<section class="page" id="bedenken" style="background:linear-gradient(180deg,transparent,rgba(0,0,0,.25),transparent)"><div class="w">
+<p class="tag" data-a="clip">Ehrlich gesagt</p>
+<h2 class="sp">Ihre Bedenken. Unsere Lösungen.</h2>
+<p class="lead" data-a="up">Wir haben nicht nur nach Gründen dafür gesucht, sondern auch nach allem, was dagegen sprechen könnte. Hier ist alles, was uns eingefallen ist. <span class="hl">Karte antippen, um die Lösung zu sehen.</span></p>
+<div class="fgrid" id="cons"></div>
+</div></section>
+
+<!-- FAKTEN -->
+<section class="page" id="fakten"><div class="w">
+<p class="tag" data-a="clip">Die Fakten</p>
+<h2 class="sp">Was über Trinken und Konzentration bekannt ist</h2>
+<div id="facts"></div>
+<div class="quote" data-a="blur">Gut gekühlt schmeckt Wasser besser. Das ist keine Studie, aber wir sind ziemlich sicher.<small>🔬 Die Forschungsabteilung der 10c</small></div>
+<div class="two" style="margin-top:4rem">
+<div data-a="left">
+<h3>Das Durst-o-Meter</h3>
+<p>Wie viele Stunden ohne Trinken? Nicht wissenschaftlich, aber ihr werdet es fühlen.</p>
+<div class="box"><label>Stunden ohne Trinken: <b id="dh">0</b><input id="dr" type="range" min="0" max="8" value="0"></label>
+<div><span id="df">😀</span> Konzentration: <b id="dp">100</b> %</div><div class="meter"><i id="di"></i></div><p id="dt" style="margin:0">Topfit. Frisch getrunken.</p></div>
+</div>
+<div data-a="right">
+<h3>Der Kältetest</h3>
+<p>Was passiert mit einem warmen Getränk im Kühlschrank?</p>
+<div class="box bottle" id="btl">
+<svg viewBox="0 0 100 220" aria-hidden="true">
+<defs><clipPath id="bc"><path d="M38 10h24v26c0 8 18 14 18 34v130c0 6-4 10-10 10H30c-6 0-10-4-10-10V70c0-20 18-26 18-34z"/></clipPath></defs>
+<g clip-path="url(#bc)"><rect x="0" y="0" width="100" height="220" fill="rgba(255,255,255,.06)"/><rect id="liq" x="0" y="64" width="100" height="160" fill="#f0a070"/><rect id="frost" x="0" y="0" width="100" height="220" fill="#e8fbff" opacity="0"/></g>
+<path d="M38 10h24v26c0 8 18 14 18 34v130c0 6-4 10-10 10H30c-6 0-10-4-10-10V70c0-20 18-26 18-34z" fill="none" stroke="#c4e6ee" stroke-width="2.5"/>
+<rect x="34" y="2" width="32" height="12" rx="3" fill="#d4b676"/>
+<circle class="drop" cx="26" cy="90" r="3" fill="#c4e6ee" style="animation-delay:0s"/><circle class="drop" cx="72" cy="120" r="2.5" fill="#c4e6ee" style="animation-delay:.8s"/><circle class="drop" cx="40" cy="150" r="2" fill="#c4e6ee" style="animation-delay:1.5s"/><circle class="drop" cx="62" cy="80" r="2" fill="#c4e6ee" style="animation-delay:1.1s"/>
+</svg>
+<div><div class="deg" id="deg">30°C</div><p style="margin:.3rem 0 0" id="dg">Lauwarm. Nicht schön.</p></div>
+</div>
+<button class="btn mag-b" id="cool">Kühlschrank zu ❄</button><button class="btn ghost" id="warm">Wieder rausnehmen</button>
+<p style="font-size:.9rem">In echt dauert das etwas länger. Wir sind trotzdem optimistisch.</p>
+</div>
+</div>
+<h3 id="quellen" style="margin-top:4rem">Quellen</h3>
+<ul class="rules src">
+<li>Heilpraxisnet, „Ohne ausreichende Flüssigkeit keine Konzentration in der Schule“. <a href="https://www.heilpraxisnet.de/?p=385423">heilpraxisnet.de</a></li>
+<li>Universität Bonn, Heft zu Trinkangeboten an Schulen. <a href="https://epflicht.ulb.uni-bonn.de/download/pdf/310514">epflicht.ulb.uni-bonn.de</a></li>
+<li>Pharmazeutische Zeitung, Bericht zur Rosbacher Trinkstudie. <a href="https://www.pharmazeutische-zeitung.de/medizin1-26-2001/">pharmazeutische-zeitung.de</a></li>
+<li>Vol.at, Interview „Wasser trinken für bessere Gehirnleistungen“. <a href="https://www.vol.at/wasser-trinken-fr-bessere-gehirnleistungen/1427175">vol.at</a></li>
+<li>Initiative „Trinken im Unterricht“, Elternflyer. <a href="https://www.mineralwasser.com/wp-content/uploads/TiU_Elternflyer.pdf">mineralwasser.com</a></li>
+</ul>
+<p style="margin-top:1rem;font-size:.92rem">Hinweis: Die Initiative „Trinken im Unterricht“ wird von der Mineralwasserbranche getragen. Wir führen sie nur als Ergänzung an. Alle Aussagen haben wir in eigenen Worten zusammengefasst.</p>
+</div></section>
+
+
+<!-- ANGEBOT -->
+<section class="page" id="angebot"><div class="w">
+<p class="tag" data-a="clip">Der Deal</p>
+<h2 class="sp">Unser Angebot an die Schule</h2>
+<div class="tw" data-a="up"><table><tr><th>Posten</th><th>Schule</th><th>Klasse 10c</th></tr>
+<tr class="rw"><td>Kauf des Kühlschranks</td><td class="z">0 €</td><td>Voll übernommen</td></tr>
+<tr class="rw"><td>Befüllen</td><td class="z">0 Minuten</td><td>Jeder bringt seine Sachen selbst</td></tr>
+<tr class="rw"><td>Reinigung</td><td class="z">0 Minuten</td><td>Nach festem Plan, jede Woche</td></tr>
+<tr class="rw"><td>Auswahl des Modells</td><td class="z">Nur zustimmen</td><td>Sparsam, leise, mit Prüfzeichen</td></tr>
+<tr class="rw"><td>Risiko</td><td class="z">Keins</td><td>Testphase mit Ausstiegsregel</td></tr>
+<tr class="rw"><td>Gute Laune im Klassenraum</td><td class="z">Inklusive</td><td>Garantiert</td></tr></table></div>
+<div class="gar" id="gar"></div>
+
+<div class="two" style="margin-top:5rem;align-items:start">
+<div data-a="left">
+<h3>Flüsterleise</h3>
+<p>Ungefähre Richtwerte in Dezibel. Den genauen Wert unseres Modells zeigen wir Ihnen vor dem Kauf.</p>
+<div class="db-bars watch" id="dbb"></div>
+<div class="eq" id="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<button class="btn ghost" id="hum">Brummen anhören 🔊</button>
+<p id="humt" style="margin:.8rem 0 0;font-size:.92rem">Lautsprecher leise stellen. Wir übertreiben nicht.</p>
+</div>
+<div data-a="right">
+<h3>Der Stromrechner</h3>
+<p>Eine Beispielrechnung mit Annahmen, keine Messung.</p>
+<div class="box" style="margin-top:0">
+<label>Jahresverbrauch: <b id="vk">90</b> kWh<input id="k" type="range" min="40" max="250" value="90"></label>
+<label>Strompreis: <b id="vp">35</b> ct pro kWh<input id="p" type="range" min="20" max="60" value="35"></label>
+<label>Personen in der Klasse: <b id="vs2">25</b><input id="s" type="range" min="10" max="35" value="25"></label>
+<div class="calc"><div><div class="big" id="o1">32 €</div><p style="margin:.2rem 0 0">Strom pro Jahr</p></div><div><div class="big" id="o2">1,26 €</div><p style="margin:.2rem 0 0">pro Person und Jahr</p></div></div>
+<p style="margin:1rem 0 0;font-size:.92rem">Auf Wunsch übernehmen wir auch diesen Betrag. Dann kostet der Kühlschrank die Schule wirklich gar nichts.</p>
+</div>
+</div>
+</div>
+</div></section>
+
+<!-- TESTPHASE -->
+<section class="page" id="fahrplan" style="background:linear-gradient(180deg,transparent,rgba(196,230,238,.04),transparent)"><div class="w">
+<p class="tag" data-a="clip">Der Fahrplan</p>
+<h2 class="sp">Von Ihrem Ja bis zur Bilanz</h2>
+<p data-a="up">Kein Schnellschuss. Sechs Schritte, bei denen Sie jederzeit mitreden.</p>
+<div class="tl" id="tl"><div class="line"><i></i></div><div class="rider">🧊</div></div>
+</div></section>
+
+<!-- ALLTAG -->
+<section class="page" id="alltag"><div class="w">
+<p class="tag" data-a="clip">So läuft es</p>
+<h2 class="sp">Team, Regeln und Putzplan</h2>
+<div class="team" id="team"></div>
+<h3 style="margin-top:4rem" data-a="up">Der Kodex</h3>
+<ul class="rules" id="kodex"></ul>
+<h3 style="margin-top:4rem" data-a="up">Das Putz-Glücksrad</h3>
+<div class="wheelw">
+<div class="wheel" data-a="zoom"><canvas id="wheel" width="320" height="320"></canvas></div>
+<div data-a="right"><p>Tragt Namen ein, getrennt durch Komma. Das Rad entscheidet, wer diese Woche putzt. Fair, zufällig, ohne Diskussion.</p>
+<input type="text" id="nm" value="Anna, Ben, Chris, Dana, Emil, Fiona" aria-label="Namen, durch Komma getrennt">
+<button class="btn mag-b" id="draw" style="margin-top:1rem">Rad drehen 🎡</button>
+<h3 id="nw" aria-live="polite"></h3></div>
+</div>
+</div></section>
+
+<!-- VERTRAG -->
+<section class="page" id="versprechen"><div class="w">
+<p class="tag" data-a="clip">Schwarz auf weiß</p>
+<h2 class="sp">Unser Versprechen</h2>
+<div class="contract" data-a="flip">
+<h3>Die Klasse 10c verpflichtet sich:</h3>
+<ul class="ck watch" id="ck"></ul>
+<p class="clause">Ausstiegsklausel: Wird die Schulleitung zweimal begründet unzufrieden, nimmt die Klasse den Kühlschrank ohne Diskussion wieder mit nach Hause.</p>
+</div>
+</div></section>
+
+<!-- STIMMEN -->
+<section class="page" id="stimmen"><div class="w">
+<p class="tag" data-a="clip">Das sagen alle</p>
+<h2 class="sp">Stimmen aus dem Klassenraum</h2>
+<p data-a="up">Frei erfunden. Aber man sieht es ihnen an.</p>
+</div>
+<div class="mq"><div class="tr" id="mq1"></div></div>
+<div class="mq"><div class="tr rev" id="mq2"></div></div>
+<div class="w blk">
+<p class="tag" data-a="clip">Abstimmung</p>
+<h2 class="sp">Der Stimmzettel der Klasse</h2>
+<p data-a="up">Jede Person hat genau eine Stimme. Danach ist der Zettel auf diesem Gerät gesperrt.</p>
+<div class="box" data-a="up"><div class="ballot" id="ballot"></div><button class="btn" id="cast" disabled>Stimme abgeben</button><div id="bm" style="margin-top:1rem"></div></div>
+</div></section>
+
+<!-- UNTERSCHRIFT -->
+<section class="page" id="unterschrift"><div class="w">
+<div class="decide">
+<p class="tag" style="display:inline-block">Die Entscheidung</p>
+<h2 class="sp">Sehr geehrter Herr Wolk,</h2>
+<p data-a="up">die Argumente sind vorgetragen, die Bedenken beantwortet, die Kosten gedeckt, die Verantwortung verteilt. Es fehlt nur noch Ihre Unterschrift.</p>
+<div class="box" style="text-align:left" data-a="up"><label for="sname" style="margin:0 0 .4rem">Ihr Name</label><input type="text" id="sname" autocomplete="name" placeholder="zum Beispiel: Herr Wolk"><p style="margin:1.2rem 0 .5rem">Hier unterschreiben, mit Finger oder Maus:</p><canvas id="sg"></canvas><button class="btn ghost" id="sc" style="margin-top:.8rem">Neu unterschreiben</button></div>
+<div class="stage"><button class="btn" id="yes">Genehmigt ✓</button><button class="btn" id="no">Ablehnen</button></div>
+<div id="msg" aria-live="polite"></div><p id="sst" aria-live="polite"></p>
+</div>
+</div></section>
+</main>
+
+<footer>Mini-Kühlschrank im Klassenzimmer · Klasse 10c · Hugo-Höfler-Realschule<br>Im Auftrag: Jonathan Müller und Moritz Ebner<br><b>Designed by Moritz Ebner</b></footer>
+
+<script>
+(function(){
+"use strict";
+var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+var FINE=window.matchMedia&&matchMedia("(pointer:fine)").matches;
+function $(s){return document.querySelector(s)}
+function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+/* ================= DATA ================= */
+var MAIL="moritz.ebnerlight@gmail.com";
+var CHAPS=[["🏠","Die Idee","Idee"],["💡","Die Gründe","Gründe"],["🛡️","Die Sicherheit","Sicherheit"],["📋","Der Plan","Plan"],["✍️","Die Entscheidung","Entscheidung"]];
+var PAGES=[["start",0,"Start"],["problem",0,"Das Problem"],["brief",0,"Der Brief"],["argumente",1,"Argumente"],["fakten",1,"Fakten"],["bedenken",2,"Bedenken"],["angebot",2,"Unser Angebot"],["fahrplan",3,"Fahrplan"],["alltag",3,"Alltag"],["versprechen",3,"Versprechen"],["stimmen",4,"Stimmen"],["unterschrift",4,"Unterschrift"]];
+var TICK=["Eigene Getränke kalt","Essen frisch","Kosten trägt die 10c","Putzen nach Plan","Flüsterleise","Testphase inklusive","Ausstiegsklausel","Ein klares Ja ist alles, was fehlt"];
+var VS=[["Wasser auffüllen","✓","–"],["Eigene Getränke kühlen","✗","✓"],["Pausenbrot frisch halten","✗","✓"],["Joghurt, Obst, Käse sicher lagern","✗","✓"],["Kalt nach dem Sportunterricht","✗","✓"]];
+var DAY=[["7:45","🎒","Ankommen","Getränk und Pausenbrot verschwinden im Rucksack. Der steht neben der Heizung.","19 °C","🧊","Ankommen","Getränk und Pausenbrot kommen direkt in den Kühlschrank. Dauert zehn Sekunden.","7 °C"],
+["10:15","🥵","Große Pause","Die Flasche ist warm, das Getränk schmeckt nach Plastik. Also ab zum Kiosk.","24 °C","🥤","Große Pause","Ein kaltes Getränk, ohne durchs halbe Haus zu laufen. Mehr Zeit zum Durchatmen.","7 °C"],
+["12:50","🥪","Mittag","Das Brot hat fünf Stunden im Warmen verbracht. Der Joghurt bleibt lieber zu.","26 °C","😋","Mittag","Das Essen ist frisch, der Joghurt kalt, die Stimmung gut.","8 °C"],
+["15:00","😴","Nachmittag","Müde, durstig, die Gedanken sind überall, nur nicht im Unterricht.","27 °C","🚀","Nachmittag","Versorgt, wach und aufmerksam bis zur letzten Stunde.","8 °C"]];
+var CATS={s:"Für die Schule",u:"Für den Unterricht",w:"Für uns"};
+var ARGS=[
+["s","💶","0 € für die Schule","Wir kaufen das Gerät selbst. Das Schulbudget bleibt komplett unberührt."],
+["s","🧽","0 Minuten Aufwand","Befüllen, Putzen, Kontrolle: alles übernimmt die Klasse. Weder das Kollegium noch der Hausmeister muss sich kümmern."],
+["s","↩️","Kein Risiko","Wir starten mit einer Testphase und einer Ausstiegsklausel. Die Entscheidung ist jederzeit umkehrbar."],
+["s","🔌","Geprüft und sicher","Neues Gerät mit Prüfzeichen, direkt an der Wandsteckdose. Auf Wunsch wird es vorher geprüft, wie andere Elektrogeräte der Schule."],
+["s","🏅","Ein Konzept für alle","Klappt es bei uns, bekommt die Schule einen erprobten Ablauf mit Regeln und Putzplan, den andere Klassen übernehmen können."],
+["u","💧","Mehr trinken, besser denken","Schon leichter Flüssigkeitsmangel kann Konzentration und Gedächtnis schwächen. Was kalt in Reichweite steht, wird öfter getrunken. <a href=\"#fakten\">Zu den Fakten</a>"],
+["u","🚪","Weniger Unterbrechungen","Wer sein Getränk im Raum hat, muss nicht in der Pause zum Kiosk oder während der Stunde raus."],
+["u","🕓","Fit bis zur letzten Stunde","Bei Nachmittagsunterricht liegen zwischen Frühstück und Heimweg oft acht Stunden. Frisches Essen hält die Energie oben."],
+["u","⚽","Nach dem Sport","Nach dem Sportunterricht fehlt Flüssigkeit. Ein kaltes Getränk im Klassenraum macht das Auffüllen leicht."],
+["u","☀️","Warme Tage","Im Sommer heizt sich ein Klassenraum schnell auf. Dann hilft ein kaltes Getränk mehr als jedes gekippte Fenster."],
+["w","🥛","Sicheres Essen","Joghurt, Käse oder Wurst gehören in den Kühlschrank. Bei Zimmertemperatur vermehren sich Keime deutlich schneller."],
+["w","♻️","Weniger wegwerfen","Kein Pausenbrot landet mehr im Müll, nur weil es vier Stunden im warmen Rucksack lag."],
+["w","🍶","Mehrweg statt Einweg","Eigene Flaschen von zu Hause werden kalt, statt dass man Einwegflaschen nachkauft. Spart Geld und Müll."],
+["w","🧠","Verantwortung lernen","Planen, absprechen, Regeln einhalten: Ein selbst organisiertes Projekt übt genau das, was Schule vermitteln will."],
+["w","🤝","Gemeinschaft","Ein Projekt, für das alle gemeinsam Verantwortung tragen, schweißt die Klasse zusammen."],
+["w","🤔","Nachteile?","Haben wir ehrlich gesucht. Was wir gefunden haben, steht bei den Bedenken, jeweils mit unserer Lösung. <a href=\"#bedenken\">Ansehen</a>"]];
+var CON=[
+["🦠","„Das wird doch eklig.“","Hygiene","Sauber nach Plan","Alles wird mit Namen beschriftet. Jeden Freitag entfernt das Kühlschrank-Team Verderbliches. Gereinigt wird nach festem Plan, vor den Ferien wird geleert, ausgewischt und mit offener Tür gelüftet."],
+["⚡","„Und wer zahlt den Strom?“","Stromkosten","Wir, wenn Sie möchten","Kleine, sparsame Geräte liegen laut Herstellerangaben oft unter 100 kWh im Jahr, also grob 30 bis 35 Euro. Diesen Betrag übernehmen wir auf Wunsch auch."],
+["🔌","„Ist das überhaupt sicher?“","Elektrosicherheit","Neu, geprüft, ohne Kabelsalat","Wir kaufen ein neues Gerät mit CE- und GS-Zeichen, schließen es direkt an eine Wandsteckdose an, ohne Mehrfachstecker, und lassen es auf Wunsch vorher prüfen, wie andere Elektrogeräte der Schule."],
+["🔇","„Der brummt doch.“","Lautstärke","Leiser als gedacht","Wir achten beim Kauf auf den Dezibel-Wert und zeigen Ihnen das Datenblatt vorher. Es gibt Modelle, die kaum lauter sind als Flüstern."],
+["📵","„Dann wird im Unterricht nur gegessen.“","Ablenkung","Tür zu im Unterricht","Der Kühlschrank wird nur vor dem Unterricht und in den Pausen geöffnet. Während der Stunde bleibt die Tür zu, ohne Ausnahme."],
+["🏷️","„Da gibt es Streit, wem was gehört.“","Ordnung","Beschriftet und geregelt","Jeder nutzt nur seine eigenen, beschrifteten Sachen. Bei Problemen ist das Kühlschrank-Team erster Ansprechpartner, nicht die Lehrkraft."],
+["⚖️","„Dann wollen das alle Klassen.“","Gerechtigkeit","Umso besser","Wir testen das Konzept und geben Regeln, Putzplan und Erfahrungen gern an andere Klassen weiter. Die Schule bekommt einen fertigen Ablauf."],
+["🧯","„Wo soll der überhaupt hin?“","Standort","Abgestimmt mit der Schule","Wir suchen den Platz gemeinsam mit Ihnen und dem Hausmeister aus: freistehend, mit Lüftungsabstand, nicht im Fluchtweg, nicht in der Sonne."],
+["😬","„Und wenn es schiefgeht?“","Plan B","Die Ausstiegsklausel","Nach der zweiten berechtigten Beanstandung nehmen wir den Kühlschrank ohne Diskussion wieder mit nach Hause. Das Risiko für die Schule ist null."]];
+var FACTS=[["💧","Schon 2 Prozent reichen","Etwa zwei Prozent Flüssigkeitsverlust vom Körpergewicht machen sich laut Gesundheitsportalen bemerkbar: Kopfschmerzen, Müdigkeit, Konzentrationsprobleme.",1],
+["⏰","Durst kommt zu spät","Wer Durst hat, ist schon im Defizit. Regelmäßiges Trinken ist besser als Trinken nach Gefühl.",2],
+["🧠","Das Gedächtnis leidet","In der Rosbacher Trinkstudie konnten sich Teilnehmer mit Flüssigkeitsmangel Informationen schlechter merken, vor allem im Kurzzeitgedächtnis.",3],
+["📅","Der Folgetag zählt","Die geistige Leistung ließ in dieser Studie am Folgetag am stärksten nach. Gutes Trinken lohnt sich also über den Tag hinaus.",3],
+["🌅","Viele starten im Defizit","Etwa ein Viertel der Schüler geht laut einer Ernährungswissenschaftlerin nüchtern aus dem Haus.",4],
+["🔟","Ab 10 mehr Bedarf","Für Kinder ab zehn Jahren werden etwa 1,25 Liter pro Tag genannt, bei Hitze und Sport mehr.",4],
+["📚","Trinkangebote wirken","Die TrinkFit-Studie fand in Klassen mit festem Trinkangebot weniger übergewichtige Kinder.",4],
+["✏️","Trinken im Unterricht","Fachleute empfehlen, dass Schüler nicht nur in den Pausen, sondern auch im Unterricht trinken dürfen.",5]];
+var GAR=[["💶","Kostengarantie","Die Schule bezahlt nichts für die Anschaffung."],["✨","Sauberkeitsgarantie","Reinigung nach festem Plan, Freitags-Check inklusive."],["🤫","Ruhegarantie","Leises Modell, Tür zu im Unterricht."],["🔌","Sparsamkeitsgarantie","Energiesparendes Gerät, Stecker raus in den Ferien."]];
+var DB=[["Flüstern",30,0],["Leiser Mini-Kühlschrank",32,1],["Normales Gespräch",60,0],["Gruppenarbeit",65,0],["Pausenhof",80,0]];
+var STEPS=[["Schritt 1","Ihre Zustimmung","Sie sagen Ja, gern auch mit eigenen Bedingungen."],["Schritt 2","Modell vorstellen","Wir zeigen Ihnen das Datenblatt: Verbrauch, Lautstärke, Größe, Prüfzeichen."],["Schritt 3","Standort und Prüfung","Platz und Steckdose stimmen wir mit Ihnen und dem Hausmeister ab."],["Schritt 4","Aufstellen","Kühlschrank-Team, Putzplan und Kodex hängen ab dem ersten Tag im Klassenraum."],["Schritt 5","Testphase","Bis zu den nächsten Ferien läuft der Probebetrieb. Sie können jederzeit vorbeischauen."],["Schritt 6","Gemeinsame Bilanz","Wir besprechen mit Ihnen, wie es lief. Sie entscheiden, ob er bleibt."]];
+var TEAM=[["🧊","Kühlwart","Behält den Überblick, prüft die Temperatur und ist Ansprechpartner für Herrn Wolk."],["🧽","Putzteam","Wechselt jede Woche, wird fair ausgelost und steht auf dem Plan im Klassenraum."],["🔍","Freitags-Check","Jeden Freitag: Verderbliches raus, kurz auswischen, Tür zu. Fünf Minuten, fertig."]];
+var KODEX=["Jeder beschriftet seine Sachen. Ein Kühlschrank ist keine Lotterie.","Verderbliches wird am selben Tag, spätestens vor dem Wochenende entfernt.","Geöffnet wird nur vor dem Unterricht und in den Pausen.","Die Tür wird leise geschlossen. Wir sind schließlich ein leises Modell.","Verschüttetes wird sofort aufgewischt, ohne Diskussion.","Wer den Kühlschrank ausnutzt, räumt ihn auch aus. Notfalls allein.","Bei Fragen oder Problemen kommen wir direkt zu Herrn Wolk."];
+var CK=["Wir bezahlen das Gerät vollständig selbst.","Wir zeigen Ihnen das Modell vor dem Kauf.","Wir stimmen Standort und Steckdose mit der Schule ab.","Wir halten Putzplan und Freitags-Check ein.","Die Tür bleibt während des Unterrichts zu.","Vor den Ferien wird geleert, gereinigt und der Stecker gezogen.","Nach der Testphase ziehen wir gemeinsam mit Ihnen Bilanz."];
+var QUOTES=[["Ich stehe im Klassenraum und mir ist schon immer heiß. Ein Kühlschrank wäre wenigstens Gesellschaft.","🪴 Die Zimmerpflanze"],["Endlich ein Gerät, das noch weniger redet als ich.","📋 Das Whiteboard"],["Ich gebe Wasser aus, er bewahrt Getränke auf. Wir ergänzen uns perfekt.","🚰 Der Wasserspender"],["Brummen? Ich doch nicht. Höchstens ein leises Summen aus Freude.","🧊 Der künftige Kühlschrank"],["Ich gebe zu: Ich war Teil des Problems.","🔥 Die Heizung"],["Fünf Stunden im Rucksack. Ich will nicht mehr schwitzen.","🥪 Das Pausenbrot"],["Kalt bin ich einfach mein bestes Ich.","🍶 Die Trinkflasche"],["Endlich muss ich nicht mehr alles warmhalten.","🎒 Der Rucksack"]];
+
+/* ================= BUILD ================= */
+var tk=$("#tick"),th="";for(var r=0;r<2;r++)TICK.forEach(function(t){th+="<span>"+esc(t)+"</span>"});tk.innerHTML=th;
+
+var chn=$("#chn"),tabbar=$("#tabbar"),subs=$("#subs");
+function firstOf(c){for(var i=0;i<PAGES.length;i++)if(PAGES[i][1]===c)return PAGES[i][0]}
+CHAPS.forEach(function(c,i){var a=el("a");a.href="#"+firstOf(i);a.textContent=c[0]+" "+c[1];chn.appendChild(a);var t=el("a",null,"<span>"+c[0]+"</span>"+esc(c[2]));t.href="#"+firstOf(i);tabbar.appendChild(t)});
+PAGES.forEach(function(p,i){var pg=document.getElementById(p[0]),nv=el("div","pn"),l=el("span"),r=el("span");
+if(i>0){var b=el("a","btn ghost");b.href="#"+PAGES[i-1][0];b.textContent="← "+PAGES[i-1][2];l.appendChild(b)}
+if(i<PAGES.length-1){var nx=PAGES[i+1],n=el("a","btn");n.href="#"+nx[0];n.textContent=(nx[1]!==p[1]?"Kapitel "+(nx[1]+1)+": "+CHAPS[nx[1]][1]:"Weiter: "+nx[2])+" →";r.appendChild(n)}
+nv.appendChild(l);nv.appendChild(r);nv.appendChild(el("p","sw-hint","Tipp: nach links oder rechts wischen zum Blättern"));pg.appendChild(nv)});
+var vs=$("#vs");VS.forEach(function(v,i){vs.appendChild(el("div",null,esc(v[0])));[1,2].forEach(function(k){var d=el("div","c","<span style=\"--d:"+(0.25+i*0.12+k*0.08)+"s;color:"+(v[k]==="✓"?"var(--ice)":v[k]==="✗"?"var(--warm)":"var(--mute)")+"\">"+v[k]+"</span>");vs.appendChild(d)})});
+
+var day=$("#day");
+function dayHTML(d,m){var o=m?4:0;return '<span class="t">'+d[0]+'</span><span class="dg">'+d[o?8:4]+'</span><span class="em">'+d[1+o]+'</span><h4>'+esc(d[2+o])+'</h4><p>'+esc(d[3+o])+'</p>'}
+DAY.forEach(function(d,i){var x=el("div","di",dayHTML(d,false));x.setAttribute("data-a","flip");x.style.setProperty("--d",i*0.1+"s");day.appendChild(x)});
+
+var args=$("#args");
+ARGS.forEach(function(a,i){var c=el("div","card tilt",'<span class="cat">'+CATS[a[0]]+'</span><span class="ic">'+a[1]+'</span><h4>'+esc(a[2])+'</h4><p>'+a[3]+'</p>');c.dataset.c=a[0];c.setAttribute("data-a",["up","zoom","flip","blur"][i%4]);c.style.setProperty("--d",(i%3)*0.08+"s");args.appendChild(c)});
+var chips=$("#chips");[["all","Alle"],["s",CATS.s],["u",CATS.u],["w",CATS.w]].forEach(function(c,i){var b=el("button","chip"+(i?"":" on"));b.textContent=c[1];b.onclick=function(){$$(".chip").forEach(function(x){x.classList.toggle("on",x===b)});filter(c[0])};chips.appendChild(b)});
+function filter(k){$$("#args .card").forEach(function(c){var show=k==="all"||c.dataset.c===k;if(show){c.style.display="";requestAnimationFrame(function(){requestAnimationFrame(function(){c.classList.remove("out")})})}else{c.classList.add("out");setTimeout(function(){if(c.classList.contains("out"))c.style.display="none"},350)}})}
+
+var reel=$("#reel"),RL=ARGS.slice(0,ARGS.length-1),COPIES=5;
+for(var cp=0;cp<COPIES;cp++)RL.forEach(function(a){reel.appendChild(el("li",null,"<span>"+a[1]+"</span>"+esc(a[2])))});
+var lights=$("#lights");for(var li=0;li<9;li++){var ii=el("i");ii.style.setProperty("--i",li);lights.appendChild(ii)}
+
+var cons=$("#cons");
+CON.forEach(function(c,i){var b=el("button","flipc",'<div class="fc"><div class="front"><small>Bedenken: '+esc(c[2])+'</small><span class="em">'+c[0]+'</span><span class="q">'+esc(c[1])+'</span><span class="tap">Antippen für die Lösung ↻</span></div><div class="back"><small>Unsere Lösung</small><h4>'+esc(c[3])+'</h4><p>'+esc(c[4])+'</p></div></div>');b.setAttribute("aria-label","Bedenken "+c[2]+": Lösung anzeigen");b.setAttribute("data-a",i%2?"right":"left");b.style.setProperty("--d",(i%3)*0.1+"s");b.onclick=function(){b.classList.toggle("on");if(b.classList.contains("on"))burst(b,["✅","❄","✨"])};cons.appendChild(b)});
+
+var facts=$("#facts");
+FACTS.forEach(function(f,i){var r=el("div","row",'<span class="em">'+f[0]+'</span><div><h4>'+esc(f[1])+'</h4><p>'+esc(f[2])+'<sup><a href="#quellen"> '+f[3]+'</a></sup></p></div>');r.setAttribute("data-a",i%2?"right":"left");facts.appendChild(r)});
+
+var gar=$("#gar");GAR.forEach(function(g,i){var d=el("div",null,'<div class="seal2"><span>'+g[0]+'</span></div><h4>'+esc(g[1])+'</h4><p>'+esc(g[2])+'</p>');d.setAttribute("data-a","zoom");d.style.setProperty("--d",i*0.12+"s");gar.appendChild(d)});
+
+var dbb=$("#dbb");DB.forEach(function(d,i){var r=el("div","dbr"+(d[2]?" us":""),'<span>'+esc(d[0])+(d[2]?" ❄":"")+'</span><div class="tr"><div class="fl" style="--v:'+(d[1]/90*100)+'%;--d:'+(i*0.15)+'s">'+d[1]+' dB</div></div>');dbb.appendChild(r)});
+
+var tl=$("#tl");STEPS.forEach(function(s,i){var d=el("div","step",'<b>'+esc(s[0])+'</b><h4>'+esc(s[1])+'</h4><p>'+esc(s[2])+'</p>');d.setAttribute("data-a",i%2?"left":"right");tl.appendChild(d)});
+
+var team=$("#team");TEAM.forEach(function(t,i){var d=el("div",null,'<span class="em">'+t[0]+'</span><h3 style="margin-top:.5rem">'+esc(t[1])+'</h3><p style="margin:0">'+esc(t[2])+'</p>');d.setAttribute("data-a","drop");d.style.setProperty("--d",i*0.12+"s");team.appendChild(d)});
+var kod=$("#kodex");KODEX.forEach(function(k,i){var l=el("li");l.textContent=k;l.setAttribute("data-a","left");l.style.setProperty("--d",i*0.06+"s");kod.appendChild(l)});
+
+var ck=$("#ck");CK.forEach(function(c,i){var l=el("li",null,'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><path style="--d:'+(0.3+i*0.28)+'s" d="M6 12.5l4 4 8-9"/></svg><span>'+esc(c)+'</span>');ck.appendChild(l)});
+
+function fillMq(id,list){var t=$(id),h="";for(var r=0;r<2;r++)list.forEach(function(q){h+='<div class="qc">'+esc(q[0])+'<small>'+esc(q[1])+'</small></div>'});t.innerHTML=h}
+fillMq("#mq1",QUOTES.slice(0,4));fillMq("#mq2",QUOTES.slice(4));
+
+/* split headings */
+$$(".sp").forEach(function(h){var ws=h.textContent.trim().split(/\s+/);h.innerHTML=ws.map(function(w,i){return '<span class="w"><span style="--i:'+i+'">'+esc(w)+'</span></span>'}).join(" ")});
+/* hero letters */
+(function(){var h=$("#h1"),i=0;function wrap(node){var out=document.createDocumentFragment();node.textContent.split(/(\s+)/).forEach(function(w){if(!w)return;if(/^\s+$/.test(w)){out.appendChild(document.createTextNode(" "));return}var wd=el("span","wd");w.split("").forEach(function(ch){var s=el("span","ch");s.textContent=ch;s.style.setProperty("--i",i++);wd.appendChild(s)});out.appendChild(wd)});return out}
+Array.prototype.slice.call(h.childNodes).forEach(function(n){if(n.nodeType===3){h.replaceChild(wrap(n),n)}else{var f=wrap(n);n.textContent="";n.appendChild(f)}})})();
+
+/* ================= REVEAL ================= */
+var io=null;
+if("IntersectionObserver" in window){io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"})}
+
+
+/* ================= PROGRESS ================= */
+var bar=$("#bar"),tv=$("#tv"),tp=$("#tp"),mer=$("#mer"),thv=$("#thv"),thermo=$("#thermo");
+function prog(){var h=document.documentElement.scrollHeight-innerHeight,f=h>0?Math.min(1,Math.max(0,scrollY/h)):0;bar.style.transform="scaleX("+f+")";tlProg()}
+function setTemp(i){var f=i/(PAGES.length-1),t=Math.round(30-22*f),col="hsl("+Math.round(20+170*f)+",75%,70%)";tv.textContent=t;thv.textContent=t+"°";tp.style.setProperty("--tc",col);thermo.style.setProperty("--tc",col);mer.style.height=(100-f*88)+"%"}
+addEventListener("scroll",prog,{passive:true});addEventListener("resize",prog);
+
+/* ================= SNOW CANVAS ================= */
+var sc=$("#snow"),sx=sc.getContext("2d"),SW,SH,flakes=[],mx=-999,my=-999,sraf=null;
+function mkF(any){var z=Math.random();return{x:Math.random()*SW,y:any?Math.random()*SH:-10,z:z,r:.6+z*2.4,vy:.25+z*.9,ph:Math.random()*6.28,vx:0}}
+function sSize(){var d=Math.min(2,window.devicePixelRatio||1);SW=innerWidth;SH=innerHeight;sc.width=SW*d;sc.height=SH*d;sx.setTransform(d,0,0,d,0,0);sx.fillStyle="#e6f6fa";var n=SW<700?50:105;flakes=[];for(var i=0;i<n;i++)flakes.push(mkF(true))}
+function sTick(){sx.clearRect(0,0,SW,SH);for(var i=0;i<flakes.length;i++){var f=flakes[i];f.ph+=.012;f.y+=f.vy;f.x+=Math.sin(f.ph)*.35*f.z+f.vx;f.vx*=.94;var dx=f.x-mx,dy=f.y-my,d2=dx*dx+dy*dy;if(d2<13000){var d=Math.sqrt(d2)||1;f.vx+=dx/d*1.1*f.z;f.y+=dy/d*.7*f.z}if(f.y>SH+10||f.x<-30||f.x>SW+30)flakes[i]=mkF(false);sx.globalAlpha=.2+f.z*.6;sx.beginPath();sx.arc(f.x,f.y,f.r,0,6.283);sx.fill()}sraf=requestAnimationFrame(sTick)}
+if(!RM){sSize();sTick();addEventListener("resize",sSize);document.addEventListener("visibilitychange",function(){if(document.hidden){cancelAnimationFrame(sraf)}else{cancelAnimationFrame(sraf);sTick()}})}
+addEventListener("pointermove",function(e){mx=e.clientX;my=e.clientY},{passive:true});
+
+/* hero glow + fridge tilt */
+var hero=$(".hero"),st3=$("#st3"),fr=$("#fr");
+if(FINE&&!RM){hero.addEventListener("pointermove",function(e){var r=hero.getBoundingClientRect();hero.style.setProperty("--mx",(e.clientX-r.left)+"px");hero.style.setProperty("--my",(e.clientY-r.top)+"px");var s=st3.getBoundingClientRect(),x=(e.clientX-s.left)/s.width-.5,y=(e.clientY-s.top)/s.height-.5;fr.style.setProperty("--ry",Math.max(-22,Math.min(22,x*26))+"deg");fr.style.setProperty("--rx",Math.max(-14,Math.min(14,-y*16))+"deg")});hero.addEventListener("pointerleave",function(){fr.style.setProperty("--ry","0deg");fr.style.setProperty("--rx","0deg")})}
+
+/* sparkles on tap */
+document.addEventListener("pointerdown",function(e){if(RM)return;for(var i=0;i<6;i++){var s=el("span","spark");s.textContent="❄";s.style.left=e.clientX+"px";s.style.top=e.clientY+"px";s.style.fontSize=(10+Math.random()*10)+"px";s.style.setProperty("--sx",(Math.random()*100-50)+"px");s.style.setProperty("--sy",(Math.random()*-80-10)+"px");document.body.appendChild(s);setTimeout(function(x){x.remove()},950,s)}});
+function rain(list,n){if(RM)return;for(var i=0;i<n;i++){var f=el("span","fl");f.textContent=list[i%list.length];f.style.left=Math.random()*100+"vw";f.style.fontSize=(18+Math.random()*24)+"px";f.style.animationDuration=(2.5+Math.random()*2.5)+"s";f.style.animationDelay=Math.random()*1.2+"s";document.body.appendChild(f);setTimeout(function(x){x.remove()},6500,f)}}
+function burst(node,list){if(RM)return;var r=node.getBoundingClientRect();for(var i=0;i<8;i++){var s=el("span","spark");s.textContent=list[i%list.length];s.style.left=(r.left+r.width/2)+"px";s.style.top=(r.top+r.height/2)+"px";s.style.setProperty("--sx",(Math.random()*240-120)+"px");s.style.setProperty("--sy",(Math.random()*-160-20)+"px");document.body.appendChild(s);setTimeout(function(x){x.remove()},950,s)}}
+
+/* magnetic buttons + card tilt */
+if(FINE&&!RM){$$(".mag-b").forEach(function(b){b.addEventListener("pointermove",function(e){var r=b.getBoundingClientRect();b.style.transform="translate("+((e.clientX-r.left-r.width/2)*.22)+"px,"+((e.clientY-r.top-r.height/2)*.3)+"px)"});b.addEventListener("pointerleave",function(){b.style.transform=""})});
+$$(".tilt").forEach(function(c){c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty("--gx",x*100+"%");c.style.setProperty("--gy",y*100+"%");if(c.classList.contains("in"))c.style.transform="perspective(800px) rotateY("+((x-.5)*10)+"deg) rotateX("+((.5-y)*10)+"deg) translateY(-4px)"});c.addEventListener("pointerleave",function(){c.style.transform=""})})}
+
+/* ================= FRIDGE ================= */
+var hint=$("#hint"),taps=0;
+var QO=["Brrr, frisch!","Licht an!","Überraschung!","Kalt erwischt!","Fertig zum Servieren.","Hier drin ist es angenehm."],QC=["Tür zu, es zieht!","Ich schlafe jetzt.","Klack.","Strom sparen!"];
+fr.addEventListener("click",function(){var o=fr.classList.toggle("open");taps++;fr.setAttribute("aria-label",o?"Kühlschranktür schließen":"Kühlschranktür öffnen");
+var q=el("span","quip");q.textContent=(o?QO:QC)[Math.floor(Math.random()*(o?QO:QC).length)];st3.appendChild(q);setTimeout(function(){q.remove()},1700);
+hint.textContent=o?"Kalt, leise, bereit. So sieht Zukunft aus.":"Tür antippen. Mehrmals, wenn ihr euch traut.";
+if(o&&!RM){for(var i=0;i<8;i++){(function(i){setTimeout(function(){var m=el("span","mist");m.style.setProperty("--dx",(Math.random()*180-90)+"px");st3.appendChild(m);setTimeout(function(){m.remove()},2500)},i*150)})(i)}}
+if(taps>=6){taps=0;fr.classList.remove("dance");void fr.offsetWidth;fr.classList.add("dance");hint.textContent="Er tanzt! So glücklich macht ihn schon die Idee.";rain(["🕺","🥤","🧊","🎉"],22);setTimeout(function(){fr.classList.remove("dance")},1600)}});
+
+/* counters */
+function ease(t){return 1-Math.pow(1-t,4)}
+function run(b){var t=+b.dataset.n,s=b.dataset.s||"";if(!t||RM){b.textContent=t+s;return}var t0=performance.now();(function st(n){var k=Math.min(1,(n-t0)/1500);b.textContent=Math.round(t*ease(k))+s;if(k<1)requestAnimationFrame(st)})(t0)}
+var cs=$$("[data-n]");if(io){window.cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);cio.unobserve(e.target)}})},{threshold:.6});cs.forEach(function(c){cio.observe(c)})}else cs.forEach(run);
+
+/* ================= DAY TOGGLE ================= */
+var tgl=$("#tgl"),prob=$("#problem"),mit=false;
+tgl.onclick=function(){mit=!mit;tgl.setAttribute("aria-checked",mit);tgl.querySelector("i").textContent=mit?"❄":"🔥";$("#s0").classList.toggle("on",!mit);$("#s1").classList.toggle("on",mit);prob.classList.toggle("cold",mit);prob.classList.toggle("warm",!mit);
+$$("#day .di").forEach(function(x,i){setTimeout(function(){if(RM){x.innerHTML=dayHTML(DAY[i],mit);return}x.classList.remove("flip");void x.offsetWidth;x.classList.add("flip");setTimeout(function(){x.innerHTML=dayHTML(DAY[i],mit)},300)},i*110)});if(mit)rain(["🧊","❄"],10)};
+
+/* ================= SLOT ================= */
+var spin=$("#spin"),mach=$("#mach"),slotd=$("#slotd"),cur=0;
+spin.onclick=function(){spin.disabled=true;mach.classList.add("go");var ih=reel.firstChild.offsetHeight,n=RL.length,pick=Math.floor(Math.random()*n);var target=(COPIES-1)*n+pick;
+reel.style.transition="none";reel.style.transform="translateY("+(-cur*ih)+"px)";void reel.offsetWidth;
+reel.style.transition=RM?"none":"transform 3.2s cubic-bezier(.15,.85,.25,1)";reel.style.transform="translateY("+(-target*ih)+"px)";
+setTimeout(function(){reel.style.transition="none";cur=pick;reel.style.transform="translateY("+(-cur*ih)+"px)";mach.classList.remove("go");var a=RL[pick];slotd.innerHTML="<h3>"+a[1]+" "+esc(a[2])+"</h3><p style=\"margin:0\">"+a[3]+"</p>";slotd.classList.remove("land");void slotd.offsetWidth;slotd.classList.add("land");spin.disabled=false;spin.textContent="Nochmal ziehen 🎰";burst(mach,["🎰","✨","❄"])},RM?50:3300)};
+
+/* ================= DURST ================= */
+var DT=["Topfit. Frisch getrunken.","Alles gut. Noch.","Leichtes Gähnen.","Du denkst auffällig oft an Wasser.","Hast du gerade „Wasserfall“ gegoogelt?","Deine Konzentration ist im Urlaub.","Der Stift sieht langsam aus wie ein Strohhalm.","Du überlegst, die Tafel zu trinken.","Bitte. Einen. Schluck."],DF=["😀","😊","🙂","😐","😕","😟","😫","🥴","🫠"];
+var dr=$("#dr"),dfi=$("#df");
+dr.addEventListener("input",function(){var h=+dr.value,c=Math.max(5,100-h*12);$("#dh").textContent=h;$("#dp").textContent=c;$("#di").style.width=c+"%";$("#dt").textContent=DT[h];if(dfi.textContent!==DF[h]){dfi.textContent=DF[h];dfi.classList.remove("bump");void dfi.offsetWidth;dfi.classList.add("bump")}});
+
+/* ================= BOTTLE ================= */
+var deg=$("#deg"),dg=$("#dg"),liq=$("#liq"),frost=$("#frost"),btl=$("#btl"),temp=30,braf=null;
+function lerp(a,b,t){return Math.round(a+(b-a)*t)}
+function setT(t){temp=t;var k=(30-t)/22;deg.textContent=Math.round(t)+"°C";deg.style.setProperty("--tc","hsl("+Math.round(20+170*k)+",75%,70%)");liq.setAttribute("fill","rgb("+lerp(240,150,k)+","+lerp(160,215,k)+","+lerp(112,232,k)+")");frost.setAttribute("opacity",(Math.max(0,k-.4)*.55).toFixed(2));btl.classList.toggle("cold-b",t<13);dg.textContent=t>22?"Lauwarm. Nicht schön.":t>12?"Wird besser …":"Eiskalt. Genau richtig."}
+function go(to,dur){cancelAnimationFrame(braf);var from=temp,t0=performance.now();(function step(n){var k=Math.min(1,(n-t0)/dur);setT(from+(to-from)*(1-Math.pow(1-k,2)));if(k<1)braf=requestAnimationFrame(step)})(t0)}
+$("#cool").onclick=function(){go(8,RM?10:3500)};$("#warm").onclick=function(){go(30,RM?10:900)};
+
+/* ================= HUM ================= */
+var hb=$("#hum"),hx=$("#humt"),eq=$("#eq");
+hb.onclick=function(){try{var AC=window.AudioContext||window.webkitAudioContext,c=new AC(),o=c.createOscillator(),o2=c.createOscillator(),g=c.createGain();o.type="sine";o.frequency.value=100;o2.type="sine";o2.frequency.value=200;g.gain.value=0;o.connect(g);o2.connect(g);g.connect(c.destination);o.start();o2.start();g.gain.linearRampToValueAtTime(.03,c.currentTime+.4);g.gain.linearRampToValueAtTime(0,c.currentTime+2.4);o.stop(c.currentTime+2.5);o2.stop(c.currentTime+2.5);hx.textContent="Brrrmm … das war schon alles. Flüsterleise, versprochen.";eq.classList.add("on");setTimeout(function(){eq.classList.remove("on")},2500)}catch(e){hx.textContent="Dein Gerät sagt: Stille. Auch gut."}};
+
+/* ================= CALC ================= */
+function f2(n){return n.toFixed(2).replace(".",",")}
+var K=$("#k"),P=$("#p"),S=$("#s"),o1=$("#o1"),o2=$("#o2");
+function calc(){var c=K.value*P.value/100;$("#vk").textContent=K.value;$("#vp").textContent=P.value;$("#vs2").textContent=S.value;o1.textContent=Math.round(c)+" €";o2.textContent=f2(c/S.value)+" €";[o1,o2].forEach(function(o){o.classList.remove("pulse");void o.offsetWidth;o.classList.add("pulse")})}
+[K,P,S].forEach(function(e){e.addEventListener("input",calc)});calc();
+
+/* ================= TIMELINE ================= */
+var tlr=$("#tl");
+function tlProg(){if(!tlr)return;var r=tlr.getBoundingClientRect(),vh=innerHeight,p=(vh*.6-r.top)/r.height;p=Math.max(0,Math.min(1,p));tlr.style.setProperty("--p",p.toFixed(3));$$("#tl .step").forEach(function(s){s.classList.toggle("lit",s.offsetTop+20<p*r.height)})}
+tlProg();
+
+/* ================= WHEEL ================= */
+var wc=$("#wheel"),wx=wc.getContext("2d"),nm=$("#nm"),nw=$("#nw"),drawB=$("#draw"),rot=0,TAU=Math.PI*2;
+var WCOL=["#d4b676","#c4e6ee","#8f7640","#7fc4d6","#e6d3a3","#2b6576"];
+function names(){var L=nm.value.split(",").map(function(x){return x.trim()}).filter(Boolean);return L.length?L:["?"]}
+function drawWheel(){var L=names(),s=wc.clientWidth||300,d=Math.min(2,window.devicePixelRatio||1);wc.width=s*d;wc.height=s*d;wx.setTransform(d,0,0,d,0,0);var c=s/2,R=c-2,seg=TAU/L.length;
+L.forEach(function(n,i){wx.beginPath();wx.moveTo(c,c);wx.arc(c,c,R,i*seg,(i+1)*seg);wx.closePath();var col=WCOL[i%WCOL.length];if(L.length%WCOL.length===1&&i===L.length-1&&i>0)col=WCOL[2];wx.fillStyle=col;wx.fill();wx.strokeStyle="#0b1722";wx.lineWidth=2;wx.stroke();wx.save();wx.translate(c,c);wx.rotate(i*seg+seg/2);wx.textAlign="right";wx.textBaseline="middle";wx.fillStyle=(i%WCOL.length===5||i%WCOL.length===2)?"#f4efe4":"#0b1722";wx.font="500 "+Math.max(11,Math.min(16,140/L.length+6))+"px Jost, sans-serif";wx.fillText(n.length>12?n.slice(0,11)+"…":n,R-12,0);wx.restore()})}
+drawWheel();nm.addEventListener("input",drawWheel);addEventListener("resize",drawWheel);
+drawB.onclick=function(){var L=names();if(L.length<2){nw.textContent="Bitte mindestens zwei Namen.";return}drawB.disabled=true;nw.textContent="Es dreht sich …";rot+=TAU*(5+Math.floor(Math.random()*3))+Math.random()*TAU;wc.style.transition=RM?"none":"";wc.style.transform="rotate("+rot+"rad)";
+setTimeout(function(){var seg=TAU/L.length,a=((-Math.PI/2-rot)%TAU+TAU)%TAU,idx=Math.floor(a/seg)%L.length;nw.textContent="🧽 "+L[idx]+" putzt!";drawB.disabled=false;rain(["🧽","🫧","✨"],14)},RM?50:4900)};
+
+/* ================= CONFETTI ================= */
+var cf=$("#conf"),cc=cf.getContext("2d"),parts=[],crun=false,CW,CHh;
+var CC=["#d4b676","#c4e6ee","#f4efe4","#7fc4d6","#8f7640","#ffffff"];
+function confetti(x,y,n){if(RM)return;var d=Math.min(2,window.devicePixelRatio||1);CW=innerWidth;CHh=innerHeight;cf.width=CW*d;cf.height=CHh*d;cc.setTransform(d,0,0,d,0,0);
+for(var i=0;i<n;i++){var a=Math.random()*TAU,v=6+Math.random()*12;parts.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-8,r:Math.random()*6.28,vr:(Math.random()-.5)*.35,w:6+Math.random()*7,h:9+Math.random()*10,c:CC[i%CC.length]})}
+if(!crun){crun=true;requestAnimationFrame(cstep)}}
+function cstep(){cc.clearRect(0,0,CW,CHh);parts=parts.filter(function(p){return p.y<CHh+40});parts.forEach(function(p){p.vy+=.32;p.vx*=.985;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cc.save();cc.translate(p.x,p.y);cc.rotate(p.r);cc.fillStyle=p.c;cc.fillRect(-p.w/2,-p.h/2,p.w,Math.max(1,p.h*Math.abs(Math.cos(p.r*1.7))));cc.restore()});if(parts.length)requestAnimationFrame(cstep);else{crun=false;cc.clearRect(0,0,CW,CHh)}}
+
+/* ================= BALLOT ================= */
+var OPT=["Dafür","Sehr dafür","Extrem dafür","Dafür, aber mit Eiswürfeln"],KEY="mk10c-vote",voted=null,ballot=$("#ballot"),cast=$("#cast"),bm=$("#bm"),sel=-1;
+try{var v=localStorage.getItem(KEY);if(v!==null)voted=+v}catch(e){}
+function lock(){ballot.classList.add("done");cast.disabled=true;cast.textContent="Stimme abgegeben";$$("#ballot input").forEach(function(i){i.disabled=true});bm.innerHTML="";var s=el("span","stamp");s.textContent="STIMME GEZÄHLT";bm.appendChild(s);var p=el("p");p.textContent="Jede Person hat nur eine Stimme. Danke!";bm.appendChild(p)}
+OPT.forEach(function(o,i){var l=el("label"),r=el("input");r.type="radio";r.name="v";r.onchange=function(){sel=i;cast.disabled=false};l.appendChild(r);l.appendChild(document.createTextNode(o));if(voted===i)l.className="mine";ballot.appendChild(l)});
+if(voted!==null&&voted>=0&&voted<OPT.length){$$("#ballot label")[voted].querySelector("input").checked=true;lock()}
+cast.onclick=function(){if(sel<0||voted!==null)return;voted=sel;try{localStorage.setItem(KEY,String(sel))}catch(e){}$$("#ballot label")[sel].className="mine";lock();var r=cast.getBoundingClientRect();confetti(r.left+r.width/2,r.top,80);rain(["🗳️","❄","✅"],12)};
+
+/* ================= SIGNATURE ================= */
+var cv=$("#sg"),cx=cv.getContext("2d"),dn=false,lp=null,hasInk=false;
+function rs(){if(hasInk)return;var w=cv.clientWidth,d=Math.min(2,window.devicePixelRatio||1);if(w<50)return;cv.width=w*d;cv.height=170*d;cx.setTransform(d,0,0,d,0,0);cx.strokeStyle="#d4b676";cx.lineWidth=3;cx.lineCap="round";cx.lineJoin="round"}
+rs();addEventListener("resize",rs);
+function pt(e){var r=cv.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]}
+cv.addEventListener("pointerdown",function(e){dn=true;lp=pt(e);cv.setPointerCapture(e.pointerId)});
+cv.addEventListener("pointermove",function(e){if(!dn)return;var p=pt(e);cx.beginPath();cx.moveTo(lp[0],lp[1]);cx.quadraticCurveTo(lp[0],lp[1],(lp[0]+p[0])/2,(lp[1]+p[1])/2);cx.lineTo(p[0],p[1]);cx.stroke();lp=p;hasInk=true});
+["pointerup","pointercancel"].forEach(function(t){cv.addEventListener(t,function(){dn=false})});
+$("#sc").onclick=function(){cx.clearRect(0,0,cv.width,cv.height);hasInk=false};
+
+/* ================= DECISION ================= */
+var no=$("#no"),yes=$("#yes"),msg=$("#msg"),tries=0,sca=1;
+var lines=["Knopf gefangen? Nein.","Der Knopf ist schneller.","Ablehnen ist gerade ausgebucht.","Noch ein Versuch?","Okay, ernsthaft: Wenn Sie Bedenken haben, sprechen Sie uns an. Wir finden eine Lösung."];
+function dodge(e){if(no.disabled)return;if(e&&e.preventDefault)e.preventDefault();tries++;sca=Math.max(.55,sca-.09);var r=no.parentElement.getBoundingClientRect();no.style.right="auto";no.style.left=Math.random()*Math.max(10,r.width-140)+"px";no.style.top=Math.random()*(r.height-56)+"px";no.style.transform="scale("+sca+") rotate("+(Math.random()*20-10)+"deg)";msg.textContent=lines[Math.min(tries-1,lines.length-1)];if(tries>=5){no.disabled=true;no.style.opacity=".3"}}
+no.addEventListener("mouseenter",dodge);no.addEventListener("touchstart",dodge,{passive:false});no.addEventListener("click",dodge);
+var sst=$("#sst"),sname=$("#sname"),sent=false;
+function sendMail(){if(sent)return;sst.className="";sst.textContent="Wird an die Klasse 10c übermittelt …";yes.disabled=true;
+var mob=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent),nm=sname.value.trim();
+var data={_subject:"✍️ Kühlschrank-Antrag 10c: Genehmigt von "+nm,Name:nm,Entscheidung:"Genehmigt",Unterschrift:hasInk?"Ja, mit eigener Unterschrift gezeichnet":"Nur Name eingetragen, nicht gezeichnet",Zeitpunkt:new Date().toLocaleString("de-DE"),"Gerät":mob?"Handy / Tablet":"Computer",Seite:location.href,_template:"table",_captcha:"false"};
+fetch("https://formsubmit.co/ajax/"+MAIL,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)}).then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==="true")){sent=true;sst.className="ok";sst.textContent="📨 Ihre Zustimmung wurde an die Klasse 10c übermittelt. Danke!"}else throw new Error(j&&j.message)}).catch(function(){sst.className="err";sst.textContent="Die Nachricht an die Klasse konnte nicht gesendet werden. Bitte Internetverbindung prüfen und nochmal auf „Genehmigt“ tippen."}).then(function(){yes.disabled=false})}
+yes.addEventListener("click",function(){if(!sname.value.trim()){sname.classList.remove("need");void sname.offsetWidth;sname.classList.add("need");sname.focus();sst.className="err";sst.textContent="Bitte tragen Sie zuerst Ihren Namen ein.";return}
+msg.innerHTML="";var s=el("span","stamp");s.textContent="GENEHMIGT ✓";msg.appendChild(s);var p=el("p");p.textContent="Vielen Dank, Herr Wolk! Die 10c stellt Ihnen in Kürze das Modell vor.";p.style.margin="1rem auto 0";msg.appendChild(p);
+document.body.classList.remove("shake");void document.body.offsetWidth;if(!RM)document.body.classList.add("shake");var r=yes.getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2,160);setTimeout(function(){confetti(innerWidth*.15,innerHeight*.4,70);confetti(innerWidth*.85,innerHeight*.4,70)},350);rain(["🥤","❄","🎉","🧊","🥂"],30);yes.style.animation="none";sendMail()});
+
+/* ================= ROUTER + FRIDGE TRANSITIONS ================= */
+var CAN=!RM&&!!Element.prototype.animate,fx=$("#fx"),fxl=$("#fxl"),fxg=$("#fxg"),sweep=$("#sweep");
+function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+function A(e,fr,o){var a=e.animate(fr,o);return a.finished?a.finished:wait((o.duration||0)+(o.delay||0))}
+var MODES=["double","single","freezer"],mi=0;
+function openT(d,m){if(m==="double")return d.classList.contains("l")?"rotateY(-98deg)":"rotateY(98deg)";if(m==="single")return "rotateY(-98deg)";return "rotateX(-98deg)"}
+function mistBurst(){for(var i=0;i<10;i++){var m=el("span","bmist");m.style.setProperty("--dx",(Math.random()*500-250)+"px");m.style.setProperty("--dy",(Math.random()*300-150)+"px");m.style.animationDelay=(i*40)+"ms";document.body.appendChild(m);setTimeout(function(x){x.remove()},1800,m)}}
+function doors(c,swap,boot){var m=boot?"double":MODES[(mi++)%3];fx.className="on m-"+m;
+fxl.innerHTML=boot?'<span class="i">❄</span><span class="n">10c</span><span class="k">Ein Antrag mit Stil</span>':'<span class="i">'+CHAPS[c][0]+'</span><span class="n">0'+(c+1)+'</span><span class="k">'+esc(CHAPS[c][1])+'</span>';
+var ds=$$("#fx .fxd").filter(function(d){return getComputedStyle(d).display!=="none"});
+var close=boot?Promise.resolve():Promise.all(ds.map(function(d){return A(d,[{transform:openT(d,m),opacity:0},{opacity:1,offset:.3},{transform:"none",opacity:1}],{duration:540,easing:"cubic-bezier(.55,0,.3,1)",fill:"forwards"})}));
+return close.then(function(){A(fx,[{transform:"none"},{transform:"scale(1.015)"},{transform:"none"}],{duration:200});
+A(fxl,[{opacity:0,transform:"translate(-50%,-50%) scale(.8)",filter:"blur(10px)"},{opacity:1,transform:"translate(-50%,-50%)",filter:"blur(0)"}],{duration:360,easing:"cubic-bezier(.2,.7,.2,1)",fill:"forwards"});
+swap();return wait(boot?700:460)}).then(function(){
+A(fxl,[{opacity:1,transform:"translate(-50%,-50%)"},{opacity:0,transform:"translate(-50%,-50%) scale(1.15)"}],{duration:260,fill:"forwards"});
+A(fxg,[{opacity:0},{opacity:1,offset:.25},{opacity:0}],{duration:1200});mistBurst();
+return Promise.all(ds.map(function(d){return A(d,[{transform:"none",opacity:1},{opacity:1,offset:.65},{transform:openT(d,m),opacity:0}],{duration:900,easing:"cubic-bezier(.3,.6,.15,1)",fill:"forwards"})}))}).then(function(){fx.className="";ds.concat([fxl]).forEach(function(d){d.getAnimations().forEach(function(a){a.cancel()})})})}
+function slide(pg,dir){A(pg,[{opacity:0,transform:"translateX("+(dir*60)+"px)",filter:"blur(6px)"},{opacity:1,transform:"none",filter:"blur(0)"}],{duration:560,easing:"cubic-bezier(.2,.7,.2,1)"});
+return A(sweep,[{opacity:0,transform:"translateX("+(dir>0?"-100%":"100%")+")"},{opacity:1,offset:.35},{opacity:0,transform:"translateX("+(dir>0?"100%":"-100%")+")"}],{duration:700,easing:"ease-in-out"})}
+var cur=-1,busy=false,pend=null,lastCh=-1;
+function idxOf(id){for(var i=0;i<PAGES.length;i++)if(PAGES[i][0]===id)return i;return -1}
+function navUI(i){var c=PAGES[i][1];$$("#chn a").forEach(function(a,k){a.classList.toggle("on",k===c)});$$("#tabbar a").forEach(function(a,k){a.classList.toggle("on",k===c)});
+if(c!==lastCh){lastCh=c;var h='<span class="chl">0'+(c+1)+' · '+esc(CHAPS[c][1])+'</span>',k=0;PAGES.forEach(function(p){if(p[1]===c)h+='<a href="#'+p[0]+'" style="--i:'+(k++)+'">'+esc(p[2])+'</a>'});subs.innerHTML=h}
+$$("#subs a").forEach(function(a){var on=a.getAttribute("href")==="#"+PAGES[i][0];a.classList.toggle("on",on);if(on&&a.scrollIntoView)subs.scrollLeft=a.offsetLeft-40})}
+function activate(i,delay){var id=PAGES[i][0],pg=document.getElementById(id);
+var rv=Array.prototype.slice.call(pg.querySelectorAll("[data-a],.sp,.watch,.hl")),cn=Array.prototype.slice.call(pg.querySelectorAll("[data-n]"));
+rv.forEach(function(x){x.classList.remove("in");if(io)io.unobserve(x)});cn.forEach(function(x){x.textContent="0";if(window.cio)cio.unobserve(x)});
+$$(".page").forEach(function(p){p.classList.toggle("on",p===pg)});
+setTimeout(function(){rv.forEach(function(x){if(io)io.observe(x);else x.classList.add("in")});cn.forEach(function(x){if(window.cio)cio.observe(x);else run(x)})},delay);
+navUI(i);setTemp(i);document.title=PAGES[i][2]+" · Mini-Kühlschrank · Klasse 10c";
+if(id==="alltag")drawWheel();if(id==="unterschrift")rs();prog()}
+function goPage(i,anchor){if(busy){pend=[i,anchor];return}
+if(i===cur){if(anchor)anchor.scrollIntoView({block:"start"});return}
+var prev=cur,chg=prev<0||PAGES[prev][1]!==PAGES[i][1];cur=i;
+function swap(){activate(i,chg&&CAN?520:0);if(anchor)setTimeout(function(){anchor.scrollIntoView({block:"start"})},50);else window.scrollTo(0,0)}
+if(!CAN){fx.className="";swap();return}
+busy=true;var p=chg?doors(PAGES[i][1],swap,prev<0):(swap(),slide(document.getElementById(PAGES[i][0]),i>prev?1:-1));
+function done(){busy=false;if(pend){var q=pend;pend=null;goPage(q[0],q[1])}}
+p.then(done,done)}
+function route(){var h=decodeURIComponent((location.hash||"#start").slice(1)),i=idxOf(h),anchor=null;
+if(i<0){var t=h&&document.getElementById(h),pp=t&&t.closest?t.closest(".page"):null;if(pp){i=idxOf(pp.id);anchor=t}else i=0}goPage(i,anchor)}
+addEventListener("hashchange",route);
+function step(d){var j=cur+d;if(j>=0&&j<PAGES.length)location.hash=PAGES[j][0]}
+var mn=document.querySelector("main"),tx=null,ty=0,tt=0;
+mn.addEventListener("touchstart",function(e){if(e.touches.length>1||e.target.closest("input,canvas,.reel,.mq,.tw,.wheel,.stage,textarea")){tx=null;return}tx=e.touches[0].clientX;ty=e.touches[0].clientY;tt=Date.now()},{passive:true});
+mn.addEventListener("touchend",function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>70&&Math.abs(dy)<Math.abs(dx)*.5&&Date.now()-tt<700)step(dx<0?1:-1);tx=null},{passive:true});
+document.addEventListener("keydown",function(e){if(e.target.closest&&e.target.closest("input,textarea"))return;if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
+route();
+})();
+</script>
+</body>
+</html>
